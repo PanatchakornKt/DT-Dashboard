@@ -5,7 +5,7 @@ const MainLayout = ({ children }) => {
 
   const onWidgets = () => {
     setStatus(0);
-    console.log("test");
+    console.log("katang");
   };
 
   const onAbout = () => {
