@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "./Card";
+import Card from "./layouts/card";
 
 const CardTimer = () => {
   const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
@@ -155,7 +155,6 @@ const CardTimer = () => {
                 Reset
               </button>
             </div>
-            <div className="mt-6"></div>
           </>
         ) : (
           " "
