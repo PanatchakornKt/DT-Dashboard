@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import Card from "./layouts/card";
 
 const CardJustSay = () => {
   return (
@@ -8,7 +8,6 @@ const CardJustSay = () => {
       <div className="text-center mt-8 mb-12">
         <h1 className="text-4xl font-bold undefined">Hello</h1>
       </div>
-      <div className="mt-6"></div>
     </Card>
   );
 };

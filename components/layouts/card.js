@@ -8,6 +8,7 @@ const Card = ({ children }) => {
           {children}
         </div>
       </div>
+      <div className="mt-6"></div>
     </>
   );
 };
