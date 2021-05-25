@@ -20,12 +20,12 @@ const CardCounter = () => {
     <>
       <Card>
         <h2 className="text-lg font-bold text-gray-400 mb-1.5">Counter</h2>
-        <div class="absolute top-5 right-5">
-          <button class="text-lg text-gray-600 focus:outline-none undefined">
+        <div className="absolute top-5 right-5">
+          <button className="text-lg text-gray-600 focus:outline-none undefined">
             <svg
               stroke="currentColor"
               fill="currentColor"
-              stroke-width="0"
+              strokeWidth="0"
               viewBox="0 0 24 24"
               height="1em"
               width="1em"
