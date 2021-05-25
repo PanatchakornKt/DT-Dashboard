@@ -13,12 +13,14 @@ import AddTimer from "./widgets/addTime";
 const AddWidgets = () => {
   const [modalActive, setModalActive] = useState(false);
   const [madalContent, setModalContent] = useState("");
-  //const [modalActiveCounter, setModalActiveCounter] = useState(false);
-  const [check, setCheck] = useState(0);
 
-  const [justsay, setJustsay] = useState("");
-  const [counter, setCounter] = useState("");
+  const [txtJustsay, setTxtJustsay] = useState("");
+  const [txtCounter, setTxtCounter] = useState("");
+
+  const [justsay, setJustsay] = useState(0);
+  const [counter, setCounter] = useState(0);
   const [timer, setTimer] = useState(0);
+  const [check, setCheck] = useState(0);
 
   const openModal = () => {
     setModalActive(true);
@@ -28,23 +30,26 @@ const AddWidgets = () => {
     setModalActive(false);
   };
 
-  const handleJustsay = function () {
+  const handleJustsay = () => {
     setModalActive(false);
-    setJustsay("");
-    console.log("justsay");
+    setJustsay(1);
+    setCheck(1);
   };
 
-  const handleCounter = function () {
+  const handleCounter = () => {
     setModalActive(false);
-    setCounter("");
-    handleCancel();
-    console.log("counter");
+    setCounter(1);
+    setCheck(1);
   };
 
-  const handleTimer = function () {
+  const handleTimer = () => {
     setModalActive(false);
     setTimer(1);
     setCheck(1);
+  };
+
+  const clearWidgets = () => {
+    setJustsay(0);
   };
 
   return (
@@ -95,10 +100,13 @@ const AddWidgets = () => {
           <Modal modalActive={modalActive} onCancel={onCancel}>
             <h2 className="text-xl undefined">Add widget</h2>
             <div className="flex flex-wrap text-center mt-1.5 -ml-1.5">
+              <AddJustSay handleJustsay={handleJustsay} />
+              <AddCounter handleCounter={handleCounter} />
               <AddTimer handleTimer={handleTimer} />
             </div>
           </Modal>
         )}
+
         {check === 0 ? (
           <Card>
             <h2 className="text-lg font-bold text-gray-400 mb-1.5"></h2>
@@ -106,7 +114,10 @@ const AddWidgets = () => {
               <p className="text-4xl mb-2">No widgets at all</p>
               <p>
                 Click{" "}
-                <button className="font-normal text-blue-400 focus:outline-none">
+                <button
+                  onClick={openModal}
+                  className="font-normal text-blue-400 focus:outline-none"
+                >
                   HERE
                 </button>{" "}
                 to add a new one
@@ -114,6 +125,11 @@ const AddWidgets = () => {
             </div>
           </Card>
         ) : null}
+
+        {justsay === 1 ? (
+          <CardJustSay clearWidgets={clearWidgets} setJustsay={setJustsay} />
+        ) : null}
+        {counter === 1 ? <CardCounter /> : null}
         {timer === 1 ? <CardTimer /> : null}
       </div>
     </>
