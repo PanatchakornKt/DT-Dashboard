@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./layouts/card";
 
-const CardJustSay = () => {
+const CardJustSay = ({txtJustsay, setTxtJustsay, onAddTxtJustSay}) => {
 
   return (
     <Card>
@@ -36,7 +36,7 @@ const CardJustSay = () => {
         </button>
       </div>
       <div className="text-center mt-8 mb-12">
-        <h1 className="text-4xl font-bold undefined">Hello</h1>
+        <h1 className="text-4xl font-bold undefined">{txtJustsay}</h1>
       </div>
     </Card>
   );

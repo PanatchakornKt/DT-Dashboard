@@ -33,11 +33,13 @@ const AddWidgets = () => {
     setTxtJustsay(e.target.value);
   };
 
-  const handleJustsay = () => {
-    setModalActive(false);
-    setTxtJustsay("");
-    setJustsay(1);
-    setCheck(1);
+  const onAddTxtJustSay = (e) => {
+    e.preventDefault();
+    const id = Math.random() * 1000;
+    setTxtJustsay(txtJustsay);
+    setJustsay(0);
+    setCheck(2);
+    console.log("justsay");
   };
 
   const onCancelText = () => {
@@ -46,8 +48,15 @@ const AddWidgets = () => {
     setCheck(0);
   };
 
+  const handleJustsay = () => {
+    setModalActive(false);
+    setJustsay(1);
+    setCheck(1);
+  };
+
   const handleCounter = () => {
     setModalActive(false);
+    setTxtCounter("");
     setCounter(1);
     setCheck(1);
   };
@@ -56,10 +65,6 @@ const AddWidgets = () => {
     setModalActive(false);
     setTimer(1);
     setCheck(1);
-  };
-
-  const clearWidgets = () => {
-    setJustsay(0);
   };
 
   return (
@@ -136,6 +141,10 @@ const AddWidgets = () => {
           </Card>
         ) : null}
 
+        {check === 2 ? (
+          <CardJustSay txtJustsay={txtJustsay} setTxtJustsay={setTxtJustsay} onAddTxtJustSay={onAddTxtJustSay}/>
+        ) : null}
+
         {justsay === 1 ? (
           <div className="fixed flex items-center py-5 justify-center top-0 right-0 bottom-0 left-0 bg-black bg-opacity-70 z-50">
             <div className="relative bg-gray-200 m-5 p-6 pt-4 md:p-8 md:pt-6 rounded-2xl w-96 max-w-full max-h-full overflow-auto">
@@ -158,7 +167,7 @@ const AddWidgets = () => {
               <div>
                 <fieldset>
                   <h2 className="text-xl mb-2">Add JustSay</h2>
-                  <form className="flex">
+                  <form className="flex" onSubmit={onAddTxtJustSay}>
                     <div className="flex-1 mr-1">
                       <input
                         type="text"
@@ -169,7 +178,10 @@ const AddWidgets = () => {
                       ></input>
                     </div>
                     <div>
-                      <button className="text-white focus:outline-none px-4 py-1 rounded-md bg-blue-500 hover:bg-blue-600">
+                      <button
+                        type="submit"
+                        className="text-white focus:outline-none px-4 py-1 rounded-md bg-blue-500 hover:bg-blue-600"
+                      >
                         {" "}
                         Add
                       </button>
@@ -178,9 +190,9 @@ const AddWidgets = () => {
                 </fieldset>
               </div>
             </div>
-            {txtJustsay}
           </div>
         ) : null}
+
         {counter === 1 ? (
           <div>
             <div className="fixed flex items-center py-5 justify-center top-0 right-0 bottom-0 left-0 bg-black bg-opacity-70 z-50">
@@ -225,6 +237,7 @@ const AddWidgets = () => {
             </div>
           </div>
         ) : null}
+        
         {timer === 1 ? <CardTimer /> : null}
       </div>
     </>
