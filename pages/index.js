@@ -1,10 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import AddWidgets from "../components/addWidgets";
-// import CardDefault from "../components/CardDefault";
-// import CardJustSay from "../components/CardJustsay";
-// import CardCounter from "../components/CardCounter";
-// import CardTimer from "../components/CardTimer";
 
 const index = () => {
   return (
