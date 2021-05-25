@@ -18,7 +18,7 @@ const MainLayout = ({ children }) => {
           </button>
           <button>
             <a
-              className="inline-block px-4 py-1 mr-1.5 rounded-lg text-blue-500 bg-white"
+              className="inline-block px-4 py-1 mr-1.5 rounded-lg text-blue-500 bg-gray-100"
               href="/about"
             >
               About
