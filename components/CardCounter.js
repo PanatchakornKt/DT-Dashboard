@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import Card from "./layouts/card";
 
-const CardCounter = () => {
-  const [number, setNumber] = useState(0);
-
+const CardCounter = ({ txtCounter, setTxtCounter, onAddTxtCounter }) => {
+  
   const onIncrease = () => {
-    setNumber(number + 1);
+    setTxtCounter(txtCounter + 1);
   };
 
   const onDecrease = () => {
-    setNumber(number - 1);
+    setTxtCounter(txtCounter - 1);
   };
 
   const onReset = () => {
-    setNumber(0);
+    setTxtCounter(0);
   };
 
   return (
@@ -35,7 +34,7 @@ const CardCounter = () => {
             </svg>
           </button>
         </div>
-        {number > 0 ? (
+        {txtCounter > 0 ? (
           <div className="text-center" onSubmit={(e) => e.preventDefault()}>
             <div className="flex items-center justify-center mt-4 mb-6">
               <button
@@ -44,7 +43,7 @@ const CardCounter = () => {
               >
                 -
               </button>
-              <div className="text-6xl mx-7">{number}</div>
+              <div className="text-6xl mx-7">{txtCounter}</div>
               <button
                 className="text-5xl rounded-full w-10 test-center focus:outline-none text-blue-500"
                 onClick={onIncrease}
@@ -69,7 +68,7 @@ const CardCounter = () => {
               >
                 -
               </button>
-              <div className="text-6xl mx-7">{number}</div>
+              <div className="text-6xl mx-7">{txtCounter}</div>
               <button
                 className="text-5xl rounded-full w-10 test-center focus:outline-none text-blue-500"
                 onClick={onIncrease}

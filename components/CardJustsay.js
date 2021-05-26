@@ -1,7 +1,12 @@
 import React from "react";
 import Card from "./layouts/card";
 
-const CardJustSay = ({txtJustsay, setTxtJustsay, onAddTxtJustSay}) => {
+const CardJustSay = ({ txtJustsay, setWidgetsList, widgetsList, setJustsay, justsay}) => {
+
+  const onClearJustsay = () => {
+    setJustsay(justsay - 1);
+    setWidgetsList(widgetsList - 1);
+  };
 
   return (
     <Card>
@@ -21,6 +26,7 @@ const CardJustSay = ({txtJustsay, setTxtJustsay, onAddTxtJustSay}) => {
           </svg>
         </button>
         <button 
+        onClick = {onClearJustsay}
         className="text-lg text-gray-600 focus:outline-none undefined">
           <svg
             stroke="currentColor"
