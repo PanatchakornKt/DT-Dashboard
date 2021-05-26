@@ -13,15 +13,15 @@ import AddTimer from "./widgets/addTime";
 const AddWidgets = () => {
   const [modalActive, setModalActive] = useState(false);
   const [modalJustsay, setModalJustsay] = useState(false);
+  const [modalCounter, setModalCounter] = useState(false);
 
   const [txtJustsay, setTxtJustsay] = useState("");
   const [txtCounter, setTxtCounter] = useState("");
-
-  const [counter, setCounter] = useState(0);
   const [timer, setTimer] = useState(0);
 
   const [check, setCheck] = useState(0);
-  const [chackJustSay, setCheckJustSay] = useState(false);
+  const [checkJustSay, setCheckJustSay] = useState(false);
+  const [checkCounter, setCheckCounter] = useState(false);
 
   const openModal = () => {
     setModalActive(true);
@@ -31,23 +31,33 @@ const AddWidgets = () => {
     setModalActive(false);
   };
 
-  const onInputChange = (e) => {
+  const onInputJustSay = (e) => {
     setTxtJustsay(e.target.value);
+  };
+
+  const onInputCounter = (e) => {
     setTxtCounter(e.target.value);
   };
 
   const onAddTxtJustSay = (e) => {
     e.preventDefault();
-    const id = Math.random() * 1000;
     setTxtJustsay(txtJustsay);
     setCheckJustSay(true);
     setModalJustsay(false);
     setCheck(1);
   };
 
+  const onAddTxtCounter = (e) => {
+    e.preventDefault();
+    setTxtCounter(txtCounter);
+    setCheckCounter(true);
+    setModalCounter(false);
+    setCheck(1);
+  };
+
   const onCancelText = () => {
     setModalJustsay(false);
-    setCounter(0);
+    setModalCounter(false);
   };
 
   const handleJustsay = () => {
@@ -57,9 +67,7 @@ const AddWidgets = () => {
 
   const handleCounter = () => {
     setModalActive(false);
-    setTxtCounter("");
-    setCounter(1);
-    setCheck(1);
+    setModalCounter(true);
   };
 
   const handleTimer = () => {
@@ -142,14 +150,6 @@ const AddWidgets = () => {
           </Card>
         ) : null}
 
-        {chackJustSay && (
-          <CardJustSay
-            txtJustsay={txtJustsay}
-            setTxtJustsay={setTxtJustsay}
-            onAddTxtJustSay={onAddTxtJustSay}
-          />
-        )}
-
         {modalJustsay && (
           <div className="fixed flex items-center py-5 justify-center top-0 right-0 bottom-0 left-0 bg-black bg-opacity-70 z-50">
             <div className="relative bg-gray-200 m-5 p-6 pt-4 md:p-8 md:pt-6 rounded-2xl w-96 max-w-full max-h-full overflow-auto">
@@ -179,7 +179,7 @@ const AddWidgets = () => {
                         className="w-full px-2.5 py-1 border focus:outline-none rounded-md"
                         placeholder="Enter text"
                         value={txtJustsay}
-                        onChange={onInputChange}
+                        onChange={onInputJustSay}
                       ></input>
                     </div>
                     <div>
@@ -198,7 +198,15 @@ const AddWidgets = () => {
           </div>
         )}
 
-        {counter === 1 ? (
+        {checkJustSay && (
+          <CardJustSay
+            txtJustsay={txtJustsay}
+            setTxtJustsay={setTxtJustsay}
+            onAddTxtJustSay={onAddTxtJustSay}
+          />
+        )}
+
+        {modalCounter && (
           <div>
             <div className="fixed flex items-center py-5 justify-center top-0 right-0 bottom-0 left-0 bg-black bg-opacity-70 z-50">
               <div className="relative bg-gray-200 m-5 p-6 pt-4 md:p-8 md:pt-6 rounded-2xl w-96 max-w-full max-h-full overflow-auto">
@@ -221,12 +229,14 @@ const AddWidgets = () => {
                 <div>
                   <div>
                     <h2 className="text-xl mb-2">Add Counter</h2>
-                    <form className="flex">
+                    <form className="flex" onSubmit={onAddTxtCounter}>
                       <div className="flex-1 mr-1">
                         <input
                           type="number"
                           className="w-full px-2.5 py-1 focus:outline-none rounded-md"
                           placeholder="Enter the initial value"
+                          value={txtCounter}
+                          onChange={onInputCounter}
                         ></input>
                       </div>
                       <div>
@@ -241,7 +251,15 @@ const AddWidgets = () => {
               </div>
             </div>
           </div>
-        ) : null}
+        )}
+
+        {checkCounter && (
+          <CardCounter
+            txtCounter={txtCounter}
+            setTxtCounter={setTxtCounter}
+            onAddTxtCounter={onAddTxtCounter}
+          />
+        )}
 
         {timer === 1 ? <CardTimer /> : null}
       </div>
