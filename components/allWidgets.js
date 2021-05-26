@@ -27,9 +27,7 @@ const AllWidgets = () => {
   const [timer, setTimer] = useState(0);
   const [justsay, setJustsay] = useState(0);
   const [counter, setCounter] = useState(0);
-
   const [widgetsList, setWidgetsList] = useState(0);
-  const [checkError, setCheckError] = useState("");
 
   const openModal = () => {
     setModalActive(true);
@@ -62,20 +60,16 @@ const AllWidgets = () => {
 
   const onAddTxtJustSay = (e) => {
     e.preventDefault();
-    if (e.target.value < 3) {
-      setCheckError("Please enter at least 3 characters.");
-    } else {
-      setTxtJustsay("");
-      const id = Math.floor(Math.random() * 10000) + 1;
-      const dateTime = new Date();
-      const time = `${dateTime.getHours()}:${dateTime.getMinutes()}`;
-      const title = "JusySay";
-      const newWidget = { id, title, time, txtJustsay };
-      setJustsayList([...justsayList, newWidget]);
-      setModalJustsay(false);
-      setJustsay(justsay + 1);
-      setWidgetsList(widgetsList + 1);
-    }
+    setTxtJustsay("");
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const dateTime = new Date();
+    const time = `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`;
+    const title = "JusySay";
+    const newWidget = { id, title, time, txtJustsay };
+    setJustsayList([...justsayList, newWidget]);
+    setModalJustsay(false);
+    setJustsay(justsay + 1);
+    setWidgetsList(widgetsList + 1);
   };
 
   const onAddTxtCounter = (e) => {
@@ -83,7 +77,7 @@ const AllWidgets = () => {
     setTxtCounter("");
     const id = Math.floor(Math.random() * 10000) + 1;
     const dateTime = new Date();
-    const time = `${dateTime.getHours()}:${dateTime.getMinutes()}`;
+    const time = `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`;
     const title = "Counter";
     const newWidget = { id, title, time, txtCounter };
     setCounterList([...counterList, newWidget]);
@@ -112,7 +106,7 @@ const AllWidgets = () => {
     setTxtTimer("");
     const id = Math.floor(Math.random() * 10000) + 1;
     const dateTime = new Date();
-    const time = `${dateTime.getHours()}:${dateTime.getMinutes()}`;
+    const time = `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`;
     const title = "Timer";
     const newWidget = { id, title, time, setTxtTimer };
     setTimerList([...timerList, newWidget]);
@@ -271,7 +265,6 @@ const AllWidgets = () => {
                       </button>
                     </div>
                   </form>
-                  <p className="text-red-600 text-xs mt-1">{checkError}</p>
                 </fieldset>
               </div>
             </div>
