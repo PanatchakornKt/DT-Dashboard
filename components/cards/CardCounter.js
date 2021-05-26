@@ -54,12 +54,12 @@ const CardCounter = ({
               </svg>
             </button>
           </div>
-          {txtCounter > 0 ? (
+          {countertext.txtCounter > 0 ? (
             <div className="text-center" onSubmit={(e) => e.preventDefault()}>
               <div className="flex items-center justify-center mt-4 mb-6">
                 <button
                   className="text-5xl rounded-full w-10 test-center focus:outline-none text-blue-500"
-                  onClick={() => onDecrease(countertext)}
+                  onClick={onDecrease}
                 >
                   -
                 </button>
@@ -67,13 +67,14 @@ const CardCounter = ({
                 <button
                   className="text-5xl rounded-full w-10 test-center focus:outline-none text-blue-500"
                   onClick={() => onIncrease(countertext)}
+                  onClick={onIncrease}
                 >
                   +
                 </button>
               </div>
               <button
                 className="text-white focus:outline-none px-4 py-1 rounded-md bg-blue-500 hover:bg-blue-600"
-                onClick={() => onReset(countertext)}
+                onClick={onReset}
               >
                 Set zero
               </button>
@@ -84,14 +85,14 @@ const CardCounter = ({
                 <button
                   className="text-5xl rounded-full w-10 test-center focus:outline-none text-gray-300"
                   disabled
-                  onClick={() => onDecrease(countertext)}
+                  onClick={onDecrease}
                 >
                   -
                 </button>
                 <div className="text-6xl mx-7">{countertext.txtCounter}</div>
                 <button
                   className="text-5xl rounded-full w-10 test-center focus:outline-none text-blue-500"
-                  onClick={() => onIncrease(countertext)}
+                  onClick={onIncrease}
                 >
                   +
                 </button>
@@ -99,7 +100,7 @@ const CardCounter = ({
               <button
                 className="text-white focus:outline-none px-4 py-1 rounded-md bg-gray-300 cursor-default"
                 disabled
-                onClick={() => onReset(countertext)}
+                onClick={onReset}
               >
                 Set zero
               </button>

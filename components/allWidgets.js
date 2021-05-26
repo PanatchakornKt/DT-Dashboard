@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Modal from "./modal";
+
 import Card from "../components/layouts/card";
 import CardJustSay from "./cards/CardJustsay";
 import CardCounter from "./cards/CardCounter";
 import CardTimer from "./cards/CardTimer";
+
 import AddJustSay from "./widgets/addJustsay";
 import AddCounter from "./widgets/addCounter";
 import AddTimer from "./widgets/addTime";
@@ -25,7 +27,9 @@ const AllWidgets = () => {
   const [timer, setTimer] = useState(0);
   const [justsay, setJustsay] = useState(0);
   const [counter, setCounter] = useState(0);
+
   const [widgetsList, setWidgetsList] = useState(0);
+  const [checkError, setCheckError] = useState("");
 
   const openModal = () => {
     setModalActive(true);
@@ -58,24 +62,30 @@ const AllWidgets = () => {
 
   const onAddTxtJustSay = (e) => {
     e.preventDefault();
-    setTxtJustsay("");
-    const id = Math.floor(Math.random() * 10000) + 1;
-    //const dateObj = new Date();
-    const title = "JusySay";
-    const newWidget = { id, title, txtJustsay };
-    setJustsayList([...justsayList, newWidget]);
-    setModalJustsay(false);
-    setJustsay(justsay + 1);
-    setWidgetsList(widgetsList + 1);
+    if (e.target.value < 3) {
+      setCheckError("Please enter at least 3 characters.");
+    } else {
+      setTxtJustsay("");
+      const id = Math.floor(Math.random() * 10000) + 1;
+      const dateTime = new Date();
+      const time = `${dateTime.getHours()}:${dateTime.getMinutes()}`;
+      const title = "JusySay";
+      const newWidget = { id, title, time, txtJustsay };
+      setJustsayList([...justsayList, newWidget]);
+      setModalJustsay(false);
+      setJustsay(justsay + 1);
+      setWidgetsList(widgetsList + 1);
+    }
   };
 
   const onAddTxtCounter = (e) => {
     e.preventDefault();
     setTxtCounter("");
     const id = Math.floor(Math.random() * 10000) + 1;
-    //const dateObj = new Date();
+    const dateTime = new Date();
+    const time = `${dateTime.getHours()}:${dateTime.getMinutes()}`;
     const title = "Counter";
-    const newWidget = { id, title, txtCounter };
+    const newWidget = { id, title, time, txtCounter };
     setCounterList([...counterList, newWidget]);
     setModalCounter(false);
     setCounter(counter + 1);
@@ -101,13 +111,13 @@ const AllWidgets = () => {
     setModalActive(false);
     setTxtTimer("");
     const id = Math.floor(Math.random() * 10000) + 1;
-    //const dateObj = new Date();
+    const dateTime = new Date();
+    const time = `${dateTime.getHours()}:${dateTime.getMinutes()}`;
     const title = "Timer";
-    const newWidget = { id, title, setTxtTimer };
+    const newWidget = { id, title, time, setTxtTimer };
     setTimerList([...timerList, newWidget]);
     setTimer(timer + 1);
     setWidgetsList(widgetsList + 1);
-    console.log(timerList);
   };
 
   return (
@@ -261,6 +271,7 @@ const AllWidgets = () => {
                       </button>
                     </div>
                   </form>
+                  <p className="text-red-600 text-xs mt-1">{checkError}</p>
                 </fieldset>
               </div>
             </div>
