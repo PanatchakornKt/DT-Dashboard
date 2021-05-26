@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import Card from "./layouts/card";
 
-const CardCounter = ({ txtCounter, setTxtCounter, onAddTxtCounter }) => {
-  
+const CardCounter = ({
+  txtCounter,
+  counter,
+  setCounter,
+  setWidgetsList,
+  widgetsList,
+  setTxtCounter,
+}) => {
   const onIncrease = () => {
     setTxtCounter(txtCounter + 1);
   };
@@ -15,12 +21,20 @@ const CardCounter = ({ txtCounter, setTxtCounter, onAddTxtCounter }) => {
     setTxtCounter(0);
   };
 
+  const onClearCounter = () => {
+    setCounter(counter - 1);
+    setWidgetsList(widgetsList - 1);
+  };
+
   return (
     <>
       <Card>
         <h2 className="text-lg font-bold text-gray-400 mb-1.5">Counter</h2>
         <div className="absolute top-5 right-5">
-          <button className="text-lg text-gray-600 focus:outline-none undefined">
+          <button
+            onClick={onClearCounter}
+            className="text-lg text-gray-600 focus:outline-none undefined"
+          >
             <svg
               stroke="currentColor"
               fill="currentColor"

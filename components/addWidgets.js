@@ -17,10 +17,10 @@ const AddWidgets = () => {
 
   const [txtJustsay, setTxtJustsay] = useState("");
   const [txtCounter, setTxtCounter] = useState("");
-  const [checkCounter, setCheckCounter] = useState(false);
 
   const [timer, setTimer] = useState(0);
   const [justsay, setJustsay] = useState(0);
+  const [counter, setCounter] = useState(0);
   const [widgetsList, setWidgetsList] = useState(0);
 
   const openModal = () => {
@@ -50,8 +50,8 @@ const AddWidgets = () => {
   const onAddTxtCounter = (e) => {
     e.preventDefault();
     setTxtCounter(txtCounter);
-    setCheckCounter(true);
     setModalCounter(false);
+    setCounter(counter + 1);
     setWidgetsList(widgetsList + 1);
   };
 
@@ -255,13 +255,16 @@ const AddWidgets = () => {
           </div>
         )}
 
-        {checkCounter && (
+        {counter > 0 ? (
           <CardCounter
             txtCounter={txtCounter}
             setTxtCounter={setTxtCounter}
-            onAddTxtCounter={onAddTxtCounter}
+            counter={counter}
+            setCounter={setCounter}
+            widgetsList={widgetsList}
+            setWidgetsList={setWidgetsList}
           />
-        )}
+        ) : null}
 
         {timer > 0 ? (
           <CardTimer
