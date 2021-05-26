@@ -12,14 +12,16 @@ import AddTimer from "./widgets/addTime";
 
 const AddWidgets = () => {
   const [modalActive, setModalActive] = useState(false);
+  const [modalJustsay, setModalJustsay] = useState(false);
 
   const [txtJustsay, setTxtJustsay] = useState("");
   const [txtCounter, setTxtCounter] = useState("");
 
-  const [justsay, setJustsay] = useState(0);
   const [counter, setCounter] = useState(0);
   const [timer, setTimer] = useState(0);
+
   const [check, setCheck] = useState(0);
+  const [chackJustSay, setCheckJustSay] = useState(false);
 
   const openModal = () => {
     setModalActive(true);
@@ -31,27 +33,26 @@ const AddWidgets = () => {
 
   const onInputChange = (e) => {
     setTxtJustsay(e.target.value);
+    setTxtCounter(e.target.value);
   };
 
   const onAddTxtJustSay = (e) => {
     e.preventDefault();
     const id = Math.random() * 1000;
     setTxtJustsay(txtJustsay);
-    setJustsay(0);
-    setCheck(2);
-    console.log("justsay");
+    setCheckJustSay(true);
+    setModalJustsay(false);
+    setCheck(1);
   };
 
   const onCancelText = () => {
-    setJustsay(0);
+    setModalJustsay(false);
     setCounter(0);
-    setCheck(0);
   };
 
   const handleJustsay = () => {
     setModalActive(false);
-    setJustsay(1);
-    setCheck(1);
+    setModalJustsay(true);
   };
 
   const handleCounter = () => {
@@ -141,11 +142,15 @@ const AddWidgets = () => {
           </Card>
         ) : null}
 
-        {check === 2 ? (
-          <CardJustSay txtJustsay={txtJustsay} setTxtJustsay={setTxtJustsay} onAddTxtJustSay={onAddTxtJustSay}/>
-        ) : null}
+        {chackJustSay && (
+          <CardJustSay
+            txtJustsay={txtJustsay}
+            setTxtJustsay={setTxtJustsay}
+            onAddTxtJustSay={onAddTxtJustSay}
+          />
+        )}
 
-        {justsay === 1 ? (
+        {modalJustsay && (
           <div className="fixed flex items-center py-5 justify-center top-0 right-0 bottom-0 left-0 bg-black bg-opacity-70 z-50">
             <div className="relative bg-gray-200 m-5 p-6 pt-4 md:p-8 md:pt-6 rounded-2xl w-96 max-w-full max-h-full overflow-auto">
               <button
@@ -191,7 +196,7 @@ const AddWidgets = () => {
               </div>
             </div>
           </div>
-        ) : null}
+        )}
 
         {counter === 1 ? (
           <div>
@@ -237,7 +242,7 @@ const AddWidgets = () => {
             </div>
           </div>
         ) : null}
-        
+
         {timer === 1 ? <CardTimer /> : null}
       </div>
     </>
