@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./layouts/card";
+import Card from "../layouts/card";
 
 const CardJustSay = ({
   txtJustsay,

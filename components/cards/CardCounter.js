@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "./layouts/card";
+import Card from "../layouts/card";
 
 const CardCounter = ({
   txtCounter,

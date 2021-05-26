@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import Modal from "./modal";
 
 import Card from "../components/layouts/card";
-import CardJustSay from "./CardJustsay";
-import CardCounter from "./CardCounter";
-import CardTimer from "./CardTimer";
+import CardJustSay from "./cards/CardJustsay";
+import CardCounter from "./cards/CardCounter";
+import CardTimer from "./cards/CardTimer";
 
 import AddJustSay from "./widgets/addJustsay";
 import AddCounter from "./widgets/addCounter";
 import AddTimer from "./widgets/addTime";
 
-const AddWidgets = () => {
+const AllWidgets = () => {
   const [modalActive, setModalActive] = useState(false);
   const [modalJustsay, setModalJustsay] = useState(false);
   const [modalCounter, setModalCounter] = useState(false);
@@ -279,4 +279,4 @@ const AddWidgets = () => {
   );
 };
 
-export default AddWidgets;
+export default AllWidgets;
