@@ -19,7 +19,7 @@ const AddWidgets = () => {
   const [txtCounter, setTxtCounter] = useState("");
   const [timer, setTimer] = useState(0);
 
-  const [check, setCheck] = useState(0);
+  const [widgetsList, setWidgetsList] = useState(0);
   const [checkJustSay, setCheckJustSay] = useState(false);
   const [checkCounter, setCheckCounter] = useState(false);
 
@@ -44,7 +44,7 @@ const AddWidgets = () => {
     setTxtJustsay(txtJustsay);
     setCheckJustSay(true);
     setModalJustsay(false);
-    setCheck(1);
+    setWidgetsList(widgetsList + 1);
   };
 
   const onAddTxtCounter = (e) => {
@@ -52,7 +52,7 @@ const AddWidgets = () => {
     setTxtCounter(txtCounter);
     setCheckCounter(true);
     setModalCounter(false);
-    setCheck(1);
+    setWidgetsList(widgetsList + 1);
   };
 
   const onCancelText = () => {
@@ -73,8 +73,10 @@ const AddWidgets = () => {
   const handleTimer = () => {
     setModalActive(false);
     setTimer(1);
-    setCheck(1);
+    setWidgetsList(widgetsList + 1);
   };
+
+  console.log(widgetsList);
 
   return (
     <>
@@ -131,7 +133,7 @@ const AddWidgets = () => {
           </Modal>
         )}
 
-        {check === 0 ? (
+        {widgetsList === 0 ? (
           <Card>
             <h2 className="text-lg font-bold text-gray-400 mb-1.5"></h2>
             <div className="text-center text-gray-400 my-8 font-light">
@@ -261,7 +263,13 @@ const AddWidgets = () => {
           />
         )}
 
-        {timer === 1 ? <CardTimer /> : null}
+        {timer === 1 ? (
+          <CardTimer
+            setTimer={setTimer}
+            widgetsList={widgetsList}
+            setWidgetsList={setWidgetsList}
+          />
+        ) : null}
       </div>
     </>
   );

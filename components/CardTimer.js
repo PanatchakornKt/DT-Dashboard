@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import Card from "./layouts/card";
 
-const CardTimer = () => {
+const CardTimer = ({ setTimer, setWidgetsList, widgetsList}) => {
   const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
+
+  const onClearTime = () => {
+    setTimer(0);
+    setWidgetsList(widgetsList - 1);
+  };
 
   const start = () => {
     run();
@@ -72,7 +77,10 @@ const CardTimer = () => {
           <>
             <h2 className="text-lg font-bold text-gray-400 mb-1.5">Timer</h2>
             <div className="absolute top-5 right-5">
-              <button className="text-lg text-gray-600 focus:outline-none undefined">
+              <button
+                onClick={onClearTime}
+                className="text-lg text-gray-600 focus:outline-none undefined"
+              >
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
