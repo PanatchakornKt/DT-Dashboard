@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "./layouts/card";
+import Card from "../layouts/card";
 
 const CardTimer = ({ timer, setTimer, setWidgetsList, widgetsList}) => {
   const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });

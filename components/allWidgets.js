@@ -2,33 +2,47 @@ import React, { useState } from "react";
 import Modal from "./modal";
 
 import Card from "../components/layouts/card";
-import CardJustSay from "./CardJustsay";
-import CardCounter from "./CardCounter";
-import CardTimer from "./CardTimer";
+import CardJustSay from "./cards/CardJustsay";
+import CardCounter from "./cards/CardCounter";
+import CardTimer from "./cards/CardTimer";
 
 import AddJustSay from "./widgets/addJustsay";
 import AddCounter from "./widgets/addCounter";
 import AddTimer from "./widgets/addTime";
 
-const AddWidgets = () => {
+const AllWidgets = () => {
   const [modalActive, setModalActive] = useState(false);
+  const [modalSetting, setModalSetting] = useState(false);
   const [modalJustsay, setModalJustsay] = useState(false);
   const [modalCounter, setModalCounter] = useState(false);
 
   const [txtJustsay, setTxtJustsay] = useState("");
   const [txtCounter, setTxtCounter] = useState("");
-  const [checkCounter, setCheckCounter] = useState(false);
 
   const [timer, setTimer] = useState(0);
   const [justsay, setJustsay] = useState(0);
+  const [counter, setCounter] = useState(0);
   const [widgetsList, setWidgetsList] = useState(0);
 
   const openModal = () => {
     setModalActive(true);
   };
 
+  const openSetting = () => {
+    setModalSetting(true);
+  };
+
   const onCancel = () => {
     setModalActive(false);
+    setModalSetting(false);
+  };
+
+  const onClearAll = () => {
+    setModalSetting(false);
+    setJustsay(0);
+    setCounter(0);
+    setTimer(0);
+    setWidgetsList(0);
   };
 
   const onInputJustSay = (e) => {
@@ -50,8 +64,8 @@ const AddWidgets = () => {
   const onAddTxtCounter = (e) => {
     e.preventDefault();
     setTxtCounter(txtCounter);
-    setCheckCounter(true);
     setModalCounter(false);
+    setCounter(counter + 1);
     setWidgetsList(widgetsList + 1);
   };
 
@@ -100,7 +114,10 @@ const AddWidgets = () => {
           </svg>{" "}
           Add Widget
         </button>{" "}
-        <button className="text-white focus:outline-none px-4 py-1 rounded-md bg-gray-500 hover:bg-gray-600">
+        <button
+          className="text-white focus:outline-none px-4 py-1 rounded-md bg-gray-500 hover:bg-gray-600"
+          onClick={openSetting}
+        >
           <svg
             stroke="currentColor"
             fill="currentColor"
@@ -127,6 +144,37 @@ const AddWidgets = () => {
               <AddJustSay handleJustsay={handleJustsay} />
               <AddCounter handleCounter={handleCounter} />
               <AddTimer handleTimer={handleTimer} />
+            </div>
+          </Modal>
+        )}
+
+        {modalSetting && (
+          <Modal modalSetting={modalSetting} onCancel={onCancel}>
+            <h2 className="text-xl mb-4">Setting</h2>
+            <div className="p-5 border-1 bg-white rounded-2xl relative mb-4">
+              <h2 className="text-lg font-bold text-gray-400 mb-1.5">
+                Statistics
+              </h2>
+              <div className="table">
+                <div className="table-row">
+                  <div className="table-cell pr-4 font-semibold">
+                    Total widgets:{" "}
+                  </div>
+                  <div className="table-cell">{widgetsList}</div>
+                </div>
+              </div>
+            </div>
+            <div className="p-5 border-1 bg-white rounded-2xl relative mb-4">
+              <h2 className="text-lg font-bold text-gray-400 mb-1.5">
+                Delete Zone
+              </h2>
+              <button
+                onClick={onClearAll}
+                className="text-white focus:outline-none px-4 py-1 rounded-md bg-red-500 hover:bg-red-600 w-full mb-1"
+              >
+                {" "}
+                Delete all widgets
+              </button>
             </div>
           </Modal>
         )}
@@ -255,13 +303,16 @@ const AddWidgets = () => {
           </div>
         )}
 
-        {checkCounter && (
+        {counter > 0 ? (
           <CardCounter
             txtCounter={txtCounter}
             setTxtCounter={setTxtCounter}
-            onAddTxtCounter={onAddTxtCounter}
+            counter={counter}
+            setCounter={setCounter}
+            widgetsList={widgetsList}
+            setWidgetsList={setWidgetsList}
           />
-        )}
+        ) : null}
 
         {timer > 0 ? (
           <CardTimer
@@ -276,4 +327,4 @@ const AddWidgets = () => {
   );
 };
 
-export default AddWidgets;
+export default AllWidgets;
