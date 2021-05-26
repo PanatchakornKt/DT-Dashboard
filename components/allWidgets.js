@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import Modal from "./modal";
-
 import Card from "../components/layouts/card";
 import CardJustSay from "./cards/CardJustsay";
 import CardCounter from "./cards/CardCounter";
 import CardTimer from "./cards/CardTimer";
-
 import AddJustSay from "./widgets/addJustsay";
 import AddCounter from "./widgets/addCounter";
 import AddTimer from "./widgets/addTime";
@@ -18,6 +16,11 @@ const AllWidgets = () => {
 
   const [txtJustsay, setTxtJustsay] = useState("");
   const [txtCounter, setTxtCounter] = useState("");
+  const [txtTimer, setTxtTimer] = useState("");
+
+  const [justsayList, setJustsayList] = useState([]);
+  const [counterList, setCounterList] = useState([]);
+  const [timerList, setTimerList] = useState([]);
 
   const [timer, setTimer] = useState(0);
   const [justsay, setJustsay] = useState(0);
@@ -55,7 +58,12 @@ const AllWidgets = () => {
 
   const onAddTxtJustSay = (e) => {
     e.preventDefault();
-    setTxtJustsay(txtJustsay);
+    setTxtJustsay("");
+    const id = Math.floor(Math.random() * 10000) + 1;
+    //const dateObj = new Date();
+    const title = "JusySay";
+    const newWidget = { id, title, txtJustsay };
+    setJustsayList([...justsayList, newWidget]);
     setModalJustsay(false);
     setJustsay(justsay + 1);
     setWidgetsList(widgetsList + 1);
@@ -63,7 +71,12 @@ const AllWidgets = () => {
 
   const onAddTxtCounter = (e) => {
     e.preventDefault();
-    setTxtCounter(txtCounter);
+    setTxtCounter("");
+    const id = Math.floor(Math.random() * 10000) + 1;
+    //const dateObj = new Date();
+    const title = "Counter";
+    const newWidget = { id, title, txtCounter };
+    setCounterList([...counterList, newWidget]);
     setModalCounter(false);
     setCounter(counter + 1);
     setWidgetsList(widgetsList + 1);
@@ -86,8 +99,15 @@ const AllWidgets = () => {
 
   const handleTimer = () => {
     setModalActive(false);
+    setTxtTimer("");
+    const id = Math.floor(Math.random() * 10000) + 1;
+    //const dateObj = new Date();
+    const title = "Timer";
+    const newWidget = { id, title, setTxtTimer };
+    setTimerList([...timerList, newWidget]);
     setTimer(timer + 1);
     setWidgetsList(widgetsList + 1);
+    console.log(timerList);
   };
 
   return (
@@ -228,6 +248,7 @@ const AllWidgets = () => {
                         placeholder="Enter text"
                         value={txtJustsay}
                         onChange={onInputJustSay}
+                        required
                       ></input>
                     </div>
                     <div>
@@ -253,6 +274,8 @@ const AllWidgets = () => {
             setJustsay={setJustsay}
             widgetsList={widgetsList}
             setWidgetsList={setWidgetsList}
+            justsayList={justsayList}
+            setJustsayList={setJustsayList}
           />
         ) : null}
 
@@ -287,6 +310,7 @@ const AllWidgets = () => {
                           placeholder="Enter the initial value"
                           value={txtCounter}
                           onChange={onInputCounter}
+                          required
                         ></input>
                       </div>
                       <div>
@@ -311,15 +335,20 @@ const AllWidgets = () => {
             setCounter={setCounter}
             widgetsList={widgetsList}
             setWidgetsList={setWidgetsList}
+            counterList={counterList}
+            setCounterList={setCounterList}
           />
         ) : null}
 
         {timer > 0 ? (
           <CardTimer
+            txtTimer={txtTimer}
             timer={timer}
             setTimer={setTimer}
             widgetsList={widgetsList}
             setWidgetsList={setWidgetsList}
+            timerList={timerList}
+            setTimerList={setTimerList}
           />
         ) : null}
       </div>
