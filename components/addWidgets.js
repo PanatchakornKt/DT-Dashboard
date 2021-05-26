@@ -17,11 +17,11 @@ const AddWidgets = () => {
 
   const [txtJustsay, setTxtJustsay] = useState("");
   const [txtCounter, setTxtCounter] = useState("");
-  const [timer, setTimer] = useState(0);
-
-  const [widgetsList, setWidgetsList] = useState(0);
-  const [checkJustSay, setCheckJustSay] = useState(false);
   const [checkCounter, setCheckCounter] = useState(false);
+
+  const [timer, setTimer] = useState(0);
+  const [justsay, setJustsay] = useState(0);
+  const [widgetsList, setWidgetsList] = useState(0);
 
   const openModal = () => {
     setModalActive(true);
@@ -42,8 +42,8 @@ const AddWidgets = () => {
   const onAddTxtJustSay = (e) => {
     e.preventDefault();
     setTxtJustsay(txtJustsay);
-    setCheckJustSay(true);
     setModalJustsay(false);
+    setJustsay(justsay + 1);
     setWidgetsList(widgetsList + 1);
   };
 
@@ -72,11 +72,9 @@ const AddWidgets = () => {
 
   const handleTimer = () => {
     setModalActive(false);
-    setTimer(1);
+    setTimer(timer + 1);
     setWidgetsList(widgetsList + 1);
   };
-
-  console.log(widgetsList);
 
   return (
     <>
@@ -200,13 +198,15 @@ const AddWidgets = () => {
           </div>
         )}
 
-        {checkJustSay && (
+        {justsay > 0 ? (
           <CardJustSay
             txtJustsay={txtJustsay}
-            setTxtJustsay={setTxtJustsay}
-            onAddTxtJustSay={onAddTxtJustSay}
+            justsay={justsay}
+            setJustsay={setJustsay}
+            widgetsList={widgetsList}
+            setWidgetsList={setWidgetsList}
           />
-        )}
+        ) : null}
 
         {modalCounter && (
           <div>
@@ -263,8 +263,9 @@ const AddWidgets = () => {
           />
         )}
 
-        {timer === 1 ? (
+        {timer > 0 ? (
           <CardTimer
+            timer={timer}
             setTimer={setTimer}
             widgetsList={widgetsList}
             setWidgetsList={setWidgetsList}

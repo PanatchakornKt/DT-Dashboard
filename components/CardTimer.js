@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Card from "./layouts/card";
 
-const CardTimer = ({ setTimer, setWidgetsList, widgetsList}) => {
+const CardTimer = ({ timer, setTimer, setWidgetsList, widgetsList}) => {
   const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
 
   const onClearTime = () => {
-    setTimer(0);
+    setTimer(timer - 1);
     setWidgetsList(widgetsList - 1);
   };
 
