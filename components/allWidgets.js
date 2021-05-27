@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { IoClose } from "react-icons/io5";
+import { RiAddCircleLine } from "react-icons/ri";
+import { BiBomb } from "react-icons/bi";
 import Modal from "./modal";
 
 import Card from "../components/layouts/card";
@@ -16,6 +19,7 @@ const AllWidgets = () => {
   const [modalJustsay, setModalJustsay] = useState(false);
   const [modalCounter, setModalCounter] = useState(false);
 
+  const [checkError, setCheckError] = useState("");
   const [txtJustsay, setTxtJustsay] = useState("");
   const [txtCounter, setTxtCounter] = useState("");
   const [txtTimer, setTxtTimer] = useState("");
@@ -28,6 +32,18 @@ const AllWidgets = () => {
   const [justsay, setJustsay] = useState(0);
   const [counter, setCounter] = useState(0);
   const [widgetsList, setWidgetsList] = useState(0);
+
+  const id = Math.floor(Math.random() * 10000) + 1;
+  const date = new Date();
+  let ye = new Intl.DateTimeFormat("en", { year: "2-digit" }).format(date);
+  let mo = new Intl.DateTimeFormat("en", { month: "short" }).format(date);
+  let da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(date);
+  let hms = new Intl.DateTimeFormat("en", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(date);
+  const dateTime = `Added on ${mo} ${da}, ${ye}, ${hms}`;
 
   const openModal = () => {
     setModalActive(true);
@@ -60,30 +76,36 @@ const AllWidgets = () => {
 
   const onAddTxtJustSay = (e) => {
     e.preventDefault();
-    setTxtJustsay("");
-    const id = Math.floor(Math.random() * 10000) + 1;
-    const dateTime = new Date();
-    const time = `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`;
-    const title = "JusySay";
-    const newWidget = { id, title, time, txtJustsay };
-    setJustsayList([...justsayList, newWidget]);
-    setModalJustsay(false);
-    setJustsay(justsay + 1);
-    setWidgetsList(widgetsList + 1);
+    setTxtJustsay("".trim());
+    setCheckError("");
+    if (txtJustsay.length < 3) {
+      setCheckError("Please enter at least 3 characters.");
+    } else {
+      const title = "JusySay";
+      const newWidget = { id, title, dateTime, txtJustsay };
+      setJustsayList([...justsayList, newWidget]);
+      setModalJustsay(false);
+      setJustsay(justsay + 1);
+      setWidgetsList(widgetsList + 1);
+    }
   };
 
   const onAddTxtCounter = (e) => {
     e.preventDefault();
     setTxtCounter("");
-    const id = Math.floor(Math.random() * 10000) + 1;
-    const dateTime = new Date();
-    const time = `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`;
-    const title = "Counter";
-    const newWidget = { id, title, time, txtCounter };
-    setCounterList([...counterList, newWidget]);
-    setModalCounter(false);
-    setCounter(counter + 1);
-    setWidgetsList(widgetsList + 1);
+    setCheckError("");
+    if (Number(txtCounter) < 0) {
+      setCheckError("Please enter at least 0.");
+    } else if (txtCounter.length < 0) {
+      setCheckError("Please provide some value.");
+    } else {
+      const title = "Counter";
+      const newWidget = { id, title, dateTime, txtCounter };
+      setCounterList([...counterList, newWidget]);
+      setModalCounter(false);
+      setCounter(counter + 1);
+      setWidgetsList(widgetsList + 1);
+    }
   };
 
   const onCancelText = () => {
@@ -104,11 +126,8 @@ const AllWidgets = () => {
   const handleTimer = () => {
     setModalActive(false);
     setTxtTimer("");
-    const id = Math.floor(Math.random() * 10000) + 1;
-    const dateTime = new Date();
-    const time = `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`;
     const title = "Timer";
-    const newWidget = { id, title, time, setTxtTimer };
+    const newWidget = { id, title, dateTime, setTxtTimer };
     setTimerList([...timerList, newWidget]);
     setTimer(timer + 1);
     setWidgetsList(widgetsList + 1);
@@ -121,22 +140,7 @@ const AllWidgets = () => {
           className="text-white focus:outline-none px-4 py-1 rounded-md bg-blue-500 hover:bg-blue-600"
           onClick={openModal}
         >
-          <svg
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth="0"
-            viewBox="0 0 24 24"
-            className="inline-block text-xl relative -top-0.5"
-            height="1em"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g>
-              <path fill="none" d="M0 0h24v24H0z"></path>
-              <path d="M11 11V7h2v4h4v2h-4v4h-2v-4H7v-2h4zm1 11C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path>
-            </g>
-          </svg>{" "}
-          Add Widget
+          <RiAddCircleLine className="inline-block text-xl relative -top-0.5"/>{" "}Add Widget
         </button>{" "}
         <button
           className="text-white focus:outline-none px-4 py-1 rounded-md bg-gray-500 hover:bg-gray-600"
@@ -229,17 +233,7 @@ const AllWidgets = () => {
                 onClick={onCancelText}
                 className="absolute text-lg text-gray-600 top-4 right-4 focus:outline-none"
               >
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth="0"
-                  viewBox="0 0 512 512"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"></path>
-                </svg>
+                <IoClose />
               </button>
               <div>
                 <fieldset>
@@ -265,6 +259,7 @@ const AllWidgets = () => {
                       </button>
                     </div>
                   </form>
+                  <p className="text-red-600 text-xs mt-1">{checkError}</p>
                 </fieldset>
               </div>
             </div>
@@ -291,17 +286,7 @@ const AllWidgets = () => {
                   onClick={onCancelText}
                   className="absolute text-lg text-gray-600 top-4 right-4 focus:outline-none"
                 >
-                  <svg
-                    stroke="currentColor"
-                    fill="currentColor"
-                    strokeWidth="0"
-                    viewBox="0 0 512 512"
-                    height="1em"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"></path>
-                  </svg>
+                  <IoClose />
                 </button>
                 <div>
                   <div>
@@ -324,6 +309,7 @@ const AllWidgets = () => {
                         </button>
                       </div>
                     </form>
+                    <p className="text-red-600 text-xs mt-1">{checkError}</p>
                   </div>
                 </div>
               </div>
