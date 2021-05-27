@@ -13,11 +13,11 @@ const CardCounter = ({
   setCounterList,
 }) => {
   const onIncrease = (txtCounter) => {
-    setTxtCounter(txtCounter + 1);
+    setTxtCounter(txtCounter.value + 1);
   };
 
   const onDecrease = (txtCounter) => {
-    setTxtCounter(txtCounter - 1);
+    setTxtCounter(txtCounter.value - 1);
   };
 
   const onReset = (txtCounter) => {
@@ -57,7 +57,7 @@ const CardCounter = ({
                 <div className="text-6xl mx-7">{countertext.txtCounter}</div>
                 <button
                   className="text-5xl rounded-full w-10 test-center focus:outline-none text-blue-500"
-                  onClick={() => onIncrease(countertext)}
+                  //onClick={() => onIncrease(countertext)}
                   onClick={onIncrease}
                 >
                   +
