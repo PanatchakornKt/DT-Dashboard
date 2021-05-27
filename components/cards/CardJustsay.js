@@ -1,5 +1,5 @@
 import React from "react";
-import { IoClose } from "react-icons/io5";
+import { MdEdit, MdClose } from "react-icons/md";
 import Card from "../layouts/card";
 
 const CardJustSay = ({
@@ -25,11 +25,14 @@ const CardJustSay = ({
         <Card key={justsaytext.id}>
           <h2 className="text-lg font-bold text-gray-400 mb-1.5">JustSay</h2>
           <div className="absolute top-5 right-5">
+            <button className="text-lg text-gray-600 focus:outline-none undefined">
+              <MdEdit />
+            </button>
             <button
               onClick={() => onClearJustsay(justsaytext)}
               className="text-lg text-gray-600 focus:outline-none undefined"
             >
-              <IoClose />
+              <MdClose />
             </button>
           </div>
           <div className="text-center mt-8 mb-12">
