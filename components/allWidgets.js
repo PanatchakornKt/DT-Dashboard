@@ -140,7 +140,8 @@ const AllWidgets = () => {
           className="text-white focus:outline-none px-4 py-1 rounded-md bg-blue-500 hover:bg-blue-600"
           onClick={openModal}
         >
-          <RiAddCircleLine className="inline-block text-xl relative -top-0.5"/>{" "}Add Widget
+          <RiAddCircleLine className="inline-block text-xl relative -top-0.5" />{" "}
+          Add Widget
         </button>{" "}
         <button
           className="text-white focus:outline-none px-4 py-1 rounded-md bg-gray-500 hover:bg-gray-600"
