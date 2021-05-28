@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdEdit, MdClose } from "react-icons/md";
 import Card from "../layouts/card";
 
@@ -10,6 +10,9 @@ const CardJustSay = ({
   justsay,
   setJustsayList,
   justsayList,
+  lenghtOfJustsay,
+  setTxtJustsay,
+  setModalEdit,
 }) => {
   const onClearJustsay = (txtJustsay) => {
     setJustsayList(
@@ -19,13 +22,21 @@ const CardJustSay = ({
     setWidgetsList(widgetsList - 1);
   };
 
+  const updateJustsay = () => {
+    setModalEdit(true);
+    console.log("open edit");
+  };
+
   return (
     <>
       {justsayList.map((justsaytext) => (
         <Card key={justsaytext.id}>
           <h2 className="text-lg font-bold text-gray-400 mb-1.5">JustSay</h2>
           <div className="absolute top-5 right-5">
-            <button className="text-lg text-gray-600 focus:outline-none undefined">
+            <button
+              className="text-lg text-gray-600 focus:outline-none undefined"
+              onClick={() => updateJustsay(justsaytext)}
+            >
               <MdEdit />
             </button>
             <button

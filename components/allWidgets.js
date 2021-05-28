@@ -15,14 +15,18 @@ import AddTimer from "./widgets/addTime";
 
 const AllWidgets = () => {
   const [modalActive, setModalActive] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
   const [modalSetting, setModalSetting] = useState(false);
   const [modalJustsay, setModalJustsay] = useState(false);
   const [modalCounter, setModalCounter] = useState(false);
 
   const [checkError, setCheckError] = useState("");
   const [txtJustsay, setTxtJustsay] = useState("");
+  const [editJustsay, setEditJustsay] = useState("");
   const [txtCounter, setTxtCounter] = useState("");
   const [txtTimer, setTxtTimer] = useState("");
+
+  const [test, setTest] = useState();
 
   const [justsayList, setJustsayList] = useState([]);
   const [counterList, setCounterList] = useState([]);
@@ -74,20 +78,62 @@ const AllWidgets = () => {
     setTxtCounter(e.target.value);
   };
 
+  // const updateJustSay = (id, title, dateTime) => {
+  //   const newJustsay = justsayList.map((justsaytext) => {
+  //     justsaytext.id === id ? (id, title, dateTime) : justsaytext;
+  //   });
+  //   setTxtJustsay(newJustsay);
+  //   setEditJustsay("");
+  //   console.log("mapp");
+  // };
+
   const onAddTxtJustSay = (e) => {
     e.preventDefault();
-    setTxtJustsay("".trim());
-    setCheckError("");
-    if (txtJustsay.length < 3) {
-      setCheckError("Please enter at least 3 characters.");
+    if (!editJustsay) {
+      setTxtJustsay("".trim());
+      setCheckError("");
+      if (txtJustsay.length < 3) {
+        setCheckError("Please enter at least 3 characters.");
+      } else {
+        const title = "JusySay";
+        const newWidget = { id, title, dateTime, txtJustsay };
+        setJustsayList([...justsayList, newWidget]);
+        setModalJustsay(false);
+        setJustsay(justsay + 1);
+        setWidgetsList(widgetsList + 1);
+        console.log("addJust");
+      }
     } else {
-      const title = "JusySay";
-      const newWidget = { id, title, dateTime, txtJustsay };
-      setJustsayList([...justsayList, newWidget]);
-      setModalJustsay(false);
-      setJustsay(justsay + 1);
-      setWidgetsList(widgetsList + 1);
+      //setEditJustsay("".trim());
+      // const title = "JusySay";
+      // const newWidget = { id, title, dateTime, txtJustsay };
+      // setJustsayList([...justsayList, newWidget]);
+      // setModalJustsay(false);
+      // setJustsay(justsay + 1);
+      // setWidgetsList(widgetsList + 1);
+      // console.log("EditJustsay");
+
+      // const newJustSay = justsayList.map((justsaytext) => {
+      //   justsaytext.id === txtJustsay.id ? "katang" : null;
+      // });
+      // console.log(justsaytext);
+
+      // const findJustsay = justsayList.find(
+      //   (justsaytext) => justsaytext.id === txtJustsay.id
+      // );
+      // //console.log(findJustsay);
+      // setEditJustsay(findJustsay);
+
+      //updateJustSay(txtJustsay, editJustsay.id);
+      //setTxtJustsay(txtJustsay);
+      //setEditJustsay(txtJustsay);
+      console.log("Eidt just");
+      console.log(editJustsay);
     }
+  };
+
+  const onInputEditJustSay = (e) => {
+    setEditJustsay(e.target.value);
   };
 
   const onAddTxtCounter = (e) => {
@@ -106,11 +152,13 @@ const AllWidgets = () => {
       setCounter(counter + 1);
       setWidgetsList(widgetsList + 1);
     }
+    console.log(counterList);
   };
 
   const onCancelText = () => {
     setModalJustsay(false);
     setModalCounter(false);
+    setModalEdit(false);
   };
 
   const handleJustsay = () => {
@@ -253,15 +301,58 @@ const AllWidgets = () => {
           </div>
         )}
 
+        {modalEdit && (
+          <div className="fixed flex items-center py-5 justify-center top-0 right-0 bottom-0 left-0 bg-black bg-opacity-70 z-50">
+            <div className="relative bg-gray-200 m-5 p-6 pt-4 md:p-8 md:pt-6 rounded-2xl w-96 max-w-full max-h-full overflow-auto">
+              <button
+                onClick={onCancelText}
+                className="absolute text-lg text-gray-600 top-4 right-4 focus:outline-none"
+              >
+                <IoClose />
+              </button>
+              <div>
+                <fieldset>
+                  <h2 className="text-xl mb-2">Edit JustSay</h2>
+                  <form className="flex" onSubmit={onAddTxtJustSay}>
+                    <div className="flex-1 mr-1">
+                      <input
+                        type="text"
+                        className="w-full px-2.5 py-1 border focus:outline-none rounded-md"
+                        placeholder="Enter text"
+                        //defaultValue={txtJustsay}
+                        onChange={onInputEditJustSay}
+                        required
+                      ></input>
+                    </div>
+                    <div>
+                      <button
+                        type="submit"
+                        className="text-white focus:outline-none px-4 py-1 rounded-md bg-blue-500 hover:bg-blue-600"
+                      >
+                        {" "}
+                        Add
+                      </button>
+                    </div>
+                  </form>
+                  <p>test {editJustsay}</p>
+                  {/* <p className="text-red-600 text-xs mt-1">{checkError}</p> */}
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        )}
+
         {justsay > 0 ? (
           <CardJustSay
             txtJustsay={txtJustsay}
+            setTxtJustsay={setTxtJustsay}
             justsay={justsay}
             setJustsay={setJustsay}
             widgetsList={widgetsList}
             setWidgetsList={setWidgetsList}
             justsayList={justsayList}
             setJustsayList={setJustsayList}
+            setModalEdit={setModalEdit}
           />
         ) : null}
 
@@ -306,8 +397,6 @@ const AllWidgets = () => {
 
         {counter > 0 ? (
           <CardCounter
-            txtCounter={txtCounter}
-            setTxtCounter={setTxtCounter}
             counter={counter}
             setCounter={setCounter}
             widgetsList={widgetsList}
