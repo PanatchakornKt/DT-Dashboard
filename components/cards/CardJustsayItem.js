@@ -32,7 +32,7 @@ const CardJustsayItem = ({
         <div className="absolute top-5 right-5">
           <button
             className="text-lg text-gray-600 focus:outline-none undefined"
-            onClick={() => updateJustsay(justsaytext)}
+            onClick={() => updateJustsay()}
           >
             <MdEdit />
           </button>

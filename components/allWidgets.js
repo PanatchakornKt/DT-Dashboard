@@ -76,14 +76,14 @@ const AllWidgets = () => {
     setTxtCounter(e.target.value);
   };
 
-  // const updateJustSay = (id, title, dateTime) => {
-  //   const newJustsay = justsayList.map((justsaytext) => {
-  //     justsaytext.id === id ? (id, title, dateTime) : justsaytext;
-  //   });
-  //   setTxtJustsay(newJustsay);
-  //   setEditJustsay("");
-  //   console.log("mapp");
-  // };
+  const updateJustSay = (id, title, dateTime) => {
+    const newJustsay = justsayList.map((justsaytext) => {
+      justsaytext.id === id ? (id, title, dateTime) : justsaytext;
+    });
+    setTxtJustsay(newJustsay);
+    setEditJustsay("");
+    console.log("mapp");
+  };
 
   const onAddTxtJustSay = (e) => {
     e.preventDefault();
@@ -101,26 +101,9 @@ const AllWidgets = () => {
         setWidgetsList(widgetsList + 1);
       }
     } else {
-      //setEditJustsay("".trim());
-      // const title = "JusySay";
-      // const newWidget = { id, title, dateTime, txtJustsay };
-      // setJustsayList([...justsayList, newWidget]);
-      // setModalJustsay(false);
-      // setJustsay(justsay + 1);
-      // setWidgetsList(widgetsList + 1);
-      // console.log("EditJustsay");
-      // const newJustSay = justsayList.map((justsaytext) => {
-      //   justsaytext.id === txtJustsay.id ? "katang" : null;
-      // });
-      // console.log(justsaytext);
-      // const findJustsay = justsayList.find(
-      //   (justsaytext) => justsaytext.id === txtJustsay.id
-      // );
-      // //console.log(findJustsay);
-      // setEditJustsay(findJustsay);
-      //updateJustSay(txtJustsay, editJustsay.id);
+      updateJustSay(txtJustsay, editJustsay.id);
       //setTxtJustsay(txtJustsay);
-      //setEditJustsay(txtJustsay);
+      setEditJustsay(txtJustsay);
     }
   };
 
@@ -216,6 +199,30 @@ const AllWidgets = () => {
                     Total widgets:{" "}
                   </div>
                   <div className="table-cell">{widgetsList}</div>
+                </div>
+                <div className="table-row">
+                  <div className="table-cell pr-4 font-semibold">
+                    Total Just lenght:{" "}
+                  </div>
+                  <div className="table-cell">{widgetsList}</div>
+                </div>
+                <div className="table-row">
+                  <div className="table-cell pr-4 font-semibold">
+                    Total Count:{" "}
+                  </div>
+                  <div className="table-cell">{widgetsList}</div>
+                </div>
+                <div className="table-row">
+                  <div className="table-cell pr-4 font-semibold">
+                    Total Time:{" "}
+                  </div>
+                  <div className="table-cell">{widgetsList}</div>
+                </div>
+                <div className="table-row">
+                  <div className="table-cell pr-4 font-semibold">
+                    Coldest cities::{" "}
+                  </div>
+                  <div className="table-cell">N/A</div>
                 </div>
               </div>
             </div>
