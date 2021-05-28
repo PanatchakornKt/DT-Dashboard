@@ -26,8 +26,6 @@ const AllWidgets = () => {
   const [txtCounter, setTxtCounter] = useState("");
   const [txtTimer, setTxtTimer] = useState("");
 
-  const [test, setTest] = useState();
-
   const [justsayList, setJustsayList] = useState([]);
   const [counterList, setCounterList] = useState([]);
   const [timerList, setTimerList] = useState([]);
@@ -101,7 +99,6 @@ const AllWidgets = () => {
         setModalJustsay(false);
         setJustsay(justsay + 1);
         setWidgetsList(widgetsList + 1);
-        console.log("addJust");
       }
     } else {
       //setEditJustsay("".trim());
@@ -112,23 +109,18 @@ const AllWidgets = () => {
       // setJustsay(justsay + 1);
       // setWidgetsList(widgetsList + 1);
       // console.log("EditJustsay");
-
       // const newJustSay = justsayList.map((justsaytext) => {
       //   justsaytext.id === txtJustsay.id ? "katang" : null;
       // });
       // console.log(justsaytext);
-
       // const findJustsay = justsayList.find(
       //   (justsaytext) => justsaytext.id === txtJustsay.id
       // );
       // //console.log(findJustsay);
       // setEditJustsay(findJustsay);
-
       //updateJustSay(txtJustsay, editJustsay.id);
       //setTxtJustsay(txtJustsay);
       //setEditJustsay(txtJustsay);
-      console.log("Eidt just");
-      console.log(editJustsay);
     }
   };
 
@@ -344,14 +336,12 @@ const AllWidgets = () => {
 
         {justsay > 0 ? (
           <CardJustSay
-            txtJustsay={txtJustsay}
-            setTxtJustsay={setTxtJustsay}
             justsay={justsay}
-            setJustsay={setJustsay}
-            widgetsList={widgetsList}
-            setWidgetsList={setWidgetsList}
-            justsayList={justsayList}
             setJustsayList={setJustsayList}
+            justsayList={justsayList}
+            setJustsay={setJustsay}
+            setWidgetsList={setWidgetsList}
+            widgetsList={widgetsList}
             setModalEdit={setModalEdit}
           />
         ) : null}
