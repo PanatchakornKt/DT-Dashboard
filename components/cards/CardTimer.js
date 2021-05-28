@@ -189,6 +189,7 @@ const CardTimer = ({
                   Reset
                 </button>
               </div>
+              <div className="mt-6"></div>
             </>
           ) : (
             " "
