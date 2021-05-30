@@ -95,9 +95,6 @@ const Timer = ({
           )}
         </div>
         <div className="mt-6"></div>
-        {/* <div className="text-xs text-gray-400">
-          <div className="mt-6 -mb-2 text-center">{list.date}</div>
-        </div> */}
       </Card>
     </div>
   );

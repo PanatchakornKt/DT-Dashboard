@@ -28,7 +28,7 @@ const AllWidgets = () => {
   const [counter, setCounter] = useState("");
   const [timer, setTimer] = useState("");
   const [zero, setZero] = useState("");
-  const [totalTimer, setTotalTimer] = useState("");
+  const [totalTimer, setTotalTimer] = useState("00:00");
 
   const check = false;
   const disabled = false;

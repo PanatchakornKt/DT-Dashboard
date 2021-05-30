@@ -72,9 +72,6 @@ const Counter = ({ title, list, onDelete, zero, setZero }) => {
               </button>
             </div>
             {resetButton}
-            {/* <div className="text-xs text-gray-400">
-            <div className="mt-6 -mb-2 text-center">{list.date}</div>
-          </div> */}
           </div>
           <div className="mt-6"></div>
         </Card>
