@@ -7,7 +7,7 @@ const CardJustSay = ({
   setListAllWidgets,
   listAllWidgets,
   realTime,
-  handleAddWidgets
+  handleAddWidgets,
 }) => {
   const [checkError, setCheckError] = useState("");
   const onSubmit = (e) => {
@@ -19,18 +19,12 @@ const CardJustSay = ({
       setJustSay(e.target.title.value.trim());
       handleCancel();
 
-      let id;
-      if (listAllWidgets.length == 0) {
-        id = 1;
-      } else {
-        const lastArray = listAllWidgets.slice(-1).pop(); 
-        id = lastArray.id + 1;
-      }
+      const id = Math.floor(Math.random() * 10000) + 1;
       const data = {
         value: e.target.title.value.trim(),
         id: id,
         date: realTime,
-        type: "justSay"
+        type: "justSay",
       };
       setListAllWidgets([...listAllWidgets, data]);
     }
@@ -43,7 +37,6 @@ const CardJustSay = ({
           <input
             type="text"
             name="title"
-
             className="w-full px-2.5 py-1 focus:outline-none rounded-md"
             placeholder="Enter text"
           />
@@ -53,6 +46,6 @@ const CardJustSay = ({
       <p className="text-red-600 text-xs mt-1">{checkError}</p>
     </>
   );
-}
+};
 
 export default CardJustSay;

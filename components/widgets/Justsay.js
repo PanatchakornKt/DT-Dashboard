@@ -1,28 +1,27 @@
 import React, { useState } from "react";
 import { CardEdit } from "../cards/card";
-import { FaPen } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
+import { MdClose, MdEdit } from "react-icons/md";
 import Modal from "../modal";
-import EditJustSay from "../cards/editCardJustSay";
+import EditJustSay from "../cards/editJustSay";
 
-export default function JustSay({ title, list, onDelete, onEdit }) {
+const JustSay = ({ title, list, onDelete, onEdit }) => {
   const [modalActiveEditJustSay, setModalActiveEditJustSay] = useState(false);
 
-  const handleDelete = function () {
+  const handleSubmit = (id, value) => {
+    onEdit(id, value);
+    setModalActiveEditJustSay(false);
+  };
+
+  const handleDelete = () => {
     onDelete(list);
   };
 
-  const handleCancel = function () {
+  const handleCancel = () => {
     setModalActiveEditJustSay(false);
   };
 
-  const handleEdit = function () {
+  const handleEdit = () => {
     setModalActiveEditJustSay(true);
-  };
-
-  const handleSubmit = function (id, value) {
-    onEdit(id, value);
-    setModalActiveEditJustSay(false);
   };
 
   return (
@@ -44,10 +43,12 @@ export default function JustSay({ title, list, onDelete, onEdit }) {
             <h1 className="text-4xl font-bold">{list.value}</h1>
           </div>
           <div className="text-xs text-gray-400">
-            <div className="mt-6 -mb-2 text-center">{list.date}</div>
+            <div className="mt-6"></div>
           </div>
         </CardEdit>
       </div>
     </>
   );
-}
+};
+
+export default JustSay;
