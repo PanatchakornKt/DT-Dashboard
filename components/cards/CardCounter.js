@@ -19,13 +19,7 @@ const CardCounter = ({
       setCounter(Number(e.target.title.value));
       handleCancel();
 
-      let id;
-      if (listAllWidgets.length == 0) {
-        id = 1;
-      } else {
-        const lastArray = listAllWidgets.slice(-1).pop();
-        id = lastArray.id + 1;
-      }
+      const id = Math.floor(Math.random() * 10000) + 1;
       const data = {
         value: Number(e.target.title.value),
         id: id,
@@ -54,5 +48,5 @@ const CardCounter = ({
       <div className="text-red-600 text-xs mt-1">{checkError}</div>
     </>
   );
-}
+};
 export default CardCounter;
