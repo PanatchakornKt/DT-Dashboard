@@ -5,6 +5,11 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
   let totalJustSay = 0;
   let totalCounter = 0;
 
+  const onSubmit = (e) => {
+    e.preventDefault(e);
+    setZero(e.target.select.value);
+  };
+
   listAllWidgets.map((list) => {
     if (list.type === "justSay") {
       totalJustSay = totalJustSay + list.value.length;
@@ -12,11 +17,6 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
       totalCounter = totalCounter + list.value;
     }
   });
-
-  const onSubmit = (e) => {
-    e.preventDefault(e);
-    setZero(e.target.select.value);
-  };
 
   return (
     <>
