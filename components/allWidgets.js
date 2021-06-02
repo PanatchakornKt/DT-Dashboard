@@ -29,12 +29,14 @@ const AllWidgets = () => {
   const [modalActiveJustSay, setModalActiveJustSay] = useState(false);
   const [modalActiveJustShout, setModalActiveJustShout] = useState(false);
   const [modalActiveCounter, setModalActiveCounter] = useState(false);
+  const [modalActiveWeather, setModalActiveWeather] = useState(false);
   const [listAllWidgets, setListAllWidgets] = useState([]);
 
   const [justSay, setJustSay] = useState("");
   const [justShout, setJustShout] = useState("");
   const [counter, setCounter] = useState("");
   const [timer, setTimer] = useState("");
+  const [weather, setWeather] = useState("");
   const [zero, setZero] = useState("");
   const [totalTimer, setTotalTimer] = useState("00:00");
 
@@ -87,6 +89,12 @@ const AllWidgets = () => {
       type: "timer",
     };
     setListAllWidgets([...listAllWidgets, data]);
+  };
+
+  const handleWeather = () => {
+    setModalActiveMenu(false);
+    setModalActiveWeather(true);
+    setWeather();
   };
 
   const handleSettings = () => {
@@ -147,7 +155,6 @@ const AllWidgets = () => {
   const checkWidgets = check;
   const handleAddWidgets = () => {
     if (listAllWidgets.length > 0) {
-      console.log(listAllWidgets);
       return listAllWidgets.map((list) => {
         if (list.type === "justSay") {
           return (
@@ -266,6 +273,11 @@ const AllWidgets = () => {
               </div>
               <div onClick={handleTimer} className="w-1/3 pt-1.5 pl-1.5">
                 <WidgetsCard title="Timer">
+                  <IoTimerOutline className="mx-auto text-4xl" />
+                </WidgetsCard>
+              </div>
+              <div onClick={handleWeather} className="w-1/3 pt-1.5 pl-1.5">
+                <WidgetsCard title="Weather">
                   <IoTimerOutline className="mx-auto text-4xl" />
                 </WidgetsCard>
               </div>
