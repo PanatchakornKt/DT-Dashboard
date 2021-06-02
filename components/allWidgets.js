@@ -6,25 +6,33 @@ import Modal from "./modal";
 import Button from "./button";
 import AllSettings from "./allSettings";
 
-import { RiAddCircleLine, RiIncreaseDecreaseLine } from "react-icons/ri";
-import { RiSettings3Line } from "react-icons/ri";
+import {
+  RiAddCircleLine,
+  RiIncreaseDecreaseLine,
+  RiSettings3Line,
+} from "react-icons/ri";
 import { AiOutlineMessage } from "react-icons/ai";
 import { IoTimerOutline } from "react-icons/io5";
+import { HiOutlineSpeakerphone } from "react-icons/hi";
 
 import JustSay from "./widgets/JustSay";
+import JustShout from "./widgets/Justshout";
 import Counter from "./widgets/Counter";
 import Timer from "./widgets/Timer";
 import CardJustSay from "./cards/cardJustsay";
+import CardJustShout from "./cards/cardJustshout";
 import CardCounter from "./cards/cardCounter";
 
 const AllWidgets = () => {
   const [modalActiveMenu, setModalActiveMenu] = useState(false);
   const [modalActiveSettings, setModalActiveSettings] = useState(false);
   const [modalActiveJustSay, setModalActiveJustSay] = useState(false);
+  const [modalActiveJustShout, setModalActiveJustShout] = useState(false);
   const [modalActiveCounter, setModalActiveCounter] = useState(false);
   const [listAllWidgets, setListAllWidgets] = useState([]);
 
   const [justSay, setJustSay] = useState("");
+  const [justShout, setJustShout] = useState("");
   const [counter, setCounter] = useState("");
   const [timer, setTimer] = useState("");
   const [zero, setZero] = useState("");
@@ -47,16 +55,25 @@ const AllWidgets = () => {
   const handleClick = () => {
     setModalActiveMenu(true);
   };
+
   const handleJustSay = () => {
     setModalActiveMenu(false);
     setModalActiveJustSay(true);
     setJustSay();
   };
+
+  const handleJustShout = () => {
+    setModalActiveMenu(false);
+    setModalActiveJustShout(true);
+    setJustShout();
+  };
+
   const handleCounter = () => {
     setModalActiveMenu(false);
     setModalActiveCounter(true);
     setCounter();
   };
+
   const handleTimer = () => {
     setModalActiveMenu(false);
     setTimer("");
@@ -79,6 +96,7 @@ const AllWidgets = () => {
   const handleCancel = () => {
     setModalActiveMenu(false);
     setModalActiveJustSay(false);
+    setModalActiveJustShout(false);
     setModalActiveCounter(false);
     setModalActiveSettings(false);
   };
@@ -137,6 +155,16 @@ const AllWidgets = () => {
               onEdit={onEdit}
               key={list.id}
               title={justSay}
+              list={list}
+              onDelete={handleDelete}
+            />
+          );
+        } else if (list.type === "justShout") {
+          return (
+            <JustShout
+              onEdit={onEdit}
+              key={list.id}
+              title={justShout}
               list={list}
               onDelete={handleDelete}
             />
@@ -226,6 +254,11 @@ const AllWidgets = () => {
                   <AiOutlineMessage className="mx-auto text-4xl" />
                 </WidgetsCard>
               </div>
+              <div onClick={handleJustShout} className="w-1/3 pt-1.5 pl-1.5">
+                <WidgetsCard title="JustShout">
+                  <HiOutlineSpeakerphone className="mx-auto text-4xl" />
+                </WidgetsCard>
+              </div>
               <div onClick={handleCounter} className="w-1/3 pt-1.5 pl-1.5">
                 <WidgetsCard title="Counter">
                   <RiIncreaseDecreaseLine className="mx-auto text-4xl" />
@@ -244,6 +277,19 @@ const AllWidgets = () => {
           <Modal onCancel={handleCancel}>
             <CardJustSay
               setJustSay={setJustSay}
+              handleAddWidgets={handleAddWidgets}
+              handleCancel={handleCancel}
+              setListAllWidgets={setListAllWidgets}
+              listAllWidgets={listAllWidgets}
+              dateTime={dateTime}
+            />
+          </Modal>
+        )}
+
+        {modalActiveJustShout && (
+          <Modal onCancel={handleCancel}>
+            <CardJustShout
+              setJustShout={setJustShout}
               handleAddWidgets={handleAddWidgets}
               handleCancel={handleCancel}
               setListAllWidgets={setListAllWidgets}
