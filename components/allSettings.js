@@ -45,6 +45,28 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
         </div>
       </div>
       <div className="p-5 border-1 bg-white rounded-2xl relative mb-4">
+        <h2 className="text-lg font-bold text-gray-400 mb-1.5">
+          JustShout text
+        </h2>
+        <fieldset disabled="">
+          <form className="flex">
+            <div className="flex-1 mr-1">
+              <input
+                type="text"
+                className="w-full px-2.5 py-1 border focus:outline-none rounded-md"
+                placeholder="Enter text"
+              ></input>
+            </div>
+            <div>
+              <button className="text-white focus:outline-none px-4 py-1 rounded-md bg-gray-300 cursor-default">
+                {" "}
+                Edit
+              </button>
+            </div>
+          </form>
+        </fieldset>
+      </div>
+      <div className="p-5 border-1 bg-white rounded-2xl relative mb-4">
         <h2 className="text-lg font-bold text-gray-400 mb-1.5">Reset Zone</h2>
         <form onSubmit={onSubmit}>
           <div className="flex items-center">

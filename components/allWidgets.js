@@ -6,17 +6,6 @@ import Modal from "./modal";
 import Button from "./button";
 import AllSettings from "./allSettings";
 
-import {
-  RiAddCircleLine,
-  RiIncreaseDecreaseLine,
-  RiSettings3Line,
-} from "react-icons/ri";
-import { AiOutlineMessage } from "react-icons/ai";
-import { IoTimerOutline } from "react-icons/io5";
-import { HiOutlineSpeakerphone } from "react-icons/hi";
-import { TiWeatherPartlySunny } from "react-icons/ti";
-
-
 import JustSay from "./widgets/JustSay";
 import JustShout from "./widgets/Justshout";
 import Counter from "./widgets/Counter";
@@ -24,6 +13,16 @@ import Timer from "./widgets/Timer";
 import CardJustSay from "./cards/cardJustsay";
 import CardJustShout from "./cards/cardJustshout";
 import CardCounter from "./cards/cardCounter";
+
+import { AiOutlineMessage } from "react-icons/ai";
+import { IoTimerOutline } from "react-icons/io5";
+import { HiOutlineSpeakerphone } from "react-icons/hi";
+import { TiWeatherPartlySunny } from "react-icons/ti";
+import {
+  RiAddCircleLine,
+  RiIncreaseDecreaseLine,
+  RiSettings3Line,
+} from "react-icons/ri";
 
 const AllWidgets = () => {
   const [modalActiveMenu, setModalActiveMenu] = useState(false);
@@ -168,7 +167,7 @@ const AllWidgets = () => {
               onDelete={handleDelete}
             />
           );
-        } else if (list.type === "justShout") {
+        }else if (list.type === "justShout") {
           return (
             <JustShout
               onEdit={onEdit}

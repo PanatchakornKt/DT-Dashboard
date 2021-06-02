@@ -16,7 +16,8 @@ const CardJustShout = ({
     if (e.target.title.value.length < 3) {
       setCheckError("Please enter at least 3 characters.");
     } else {
-      setJustShout(e.target.title.value.trim());
+      setJustShout
+      (e.target.title.value.trim());
       handleCancel();
 
       const id = Math.floor(Math.random() * 10000) + 1;
