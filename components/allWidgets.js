@@ -167,7 +167,7 @@ const AllWidgets = () => {
               onDelete={handleDelete}
             />
           );
-        }else if (list.type === "justShout") {
+        } else if (list.type === "justShout") {
           return (
             <JustShout
               onEdit={onEdit}

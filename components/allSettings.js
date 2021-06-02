@@ -42,6 +42,10 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
             <div className="table-cell pr-4 font-semibold">Total time: </div>
             <div className="table-cell">{totalTimer}</div>
           </div>
+          <div className="table-row">
+            <div className="table-cell pr-4 font-semibold">Coldest cities: </div>
+            <div className="table-cell">N/A</div>
+          </div>
         </div>
       </div>
       <div className="p-5 border-1 bg-white rounded-2xl relative mb-4">
