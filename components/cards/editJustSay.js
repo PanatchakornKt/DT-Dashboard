@@ -7,7 +7,7 @@ const EditJustSay = ({
   handleCancel,
   setListAllWidgets,
   listAllWidgets,
-  realTime,
+  dateTime,
   handleAddWidgets,
   onEditSubmit,
   list,

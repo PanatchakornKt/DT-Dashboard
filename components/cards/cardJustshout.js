@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Button from "../button";
 
-const CardJustSay = ({
-  setJustSay,
+const CardJustShout = ({
+  setJustShout,
   handleCancel,
   setListAllWidgets,
   listAllWidgets,
@@ -16,7 +16,7 @@ const CardJustSay = ({
     if (e.target.title.value.length < 3) {
       setCheckError("Please enter at least 3 characters.");
     } else {
-      setJustSay(e.target.title.value.trim());
+      setJustShout(e.target.title.value.trim());
       handleCancel();
 
       const id = Math.floor(Math.random() * 10000) + 1;
@@ -24,14 +24,14 @@ const CardJustSay = ({
         value: e.target.title.value.trim(),
         id: id,
         date: dateTime,
-        type: "justSay",
+        type: "justShout",
       };
       setListAllWidgets([...listAllWidgets, data]);
     }
   };
   return (
     <>
-      <h2 className="text-xl mb-2">Add JustSay</h2>
+      <h2 className="text-xl mb-2">Add JustShout</h2>
       <form onSubmit={onSubmit} className="flex">
         <div className="flex-1 mr-1">
           <input
@@ -48,4 +48,5 @@ const CardJustSay = ({
   );
 };
 
-export default CardJustSay;
+export default CardJustShout;
+
