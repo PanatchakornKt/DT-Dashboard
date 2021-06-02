@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CardEdit } from "../cards/card";
 import { MdClose, MdEdit } from "react-icons/md";
 import Modal from "../modal";
-import EditJustShout from "../cards/EditJustShout";
+import EditJustShout from "../cards/editJustShout";
 
 const JustShout = ({ title, list, onDelete, onEdit }) => {
   const [modalActiveEditJustShout, setModalActiveEditJustShout] = useState(false);

@@ -24,7 +24,7 @@ const CardJustShout = ({
         value: e.target.title.value.trim(),
         id: id,
         date: dateTime,
-        type: "justSay",
+        type: "justShout",
       };
       setListAllWidgets([...listAllWidgets, data]);
     }

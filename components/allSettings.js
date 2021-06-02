@@ -30,7 +30,7 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
           </div>
           <div className="table-row">
             <div className="table-cell pr-4 font-semibold">
-              Total JustSay length:
+              Total Just length:
             </div>
             <div className="table-cell">{totalJustSay}</div>
           </div>

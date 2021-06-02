@@ -14,6 +14,8 @@ import {
 import { AiOutlineMessage } from "react-icons/ai";
 import { IoTimerOutline } from "react-icons/io5";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
+import { TiWeatherPartlySunny } from "react-icons/ti";
+
 
 import JustSay from "./widgets/JustSay";
 import JustShout from "./widgets/Justshout";
@@ -278,7 +280,7 @@ const AllWidgets = () => {
               </div>
               <div onClick={handleWeather} className="w-1/3 pt-1.5 pl-1.5">
                 <WidgetsCard title="Weather">
-                  <IoTimerOutline className="mx-auto text-4xl" />
+                  <TiWeatherPartlySunny className="mx-auto text-4xl" />
                 </WidgetsCard>
               </div>
             </div>
