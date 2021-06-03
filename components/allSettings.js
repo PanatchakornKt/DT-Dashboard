@@ -5,6 +5,7 @@ import Button from "./button";
 const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
   let tatalWidgets = listAllWidgets.length;
   let totalJustSay = 0;
+  let totalJustShout = 0;
   let totalCounter = 0;
 
   const onSubmit = (e) => {
@@ -15,9 +16,12 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
   listAllWidgets.map((list) => {
     if (list.type === "justSay") {
       totalJustSay = totalJustSay + list.value.length;
+    } else if (list.type === "justShout") {
+      totalJustShout = totalJustShout + list.value.length;
     } else if (list.type === "counter") {
       totalCounter = totalCounter + list.value;
     }
+
   });
 
   return (
