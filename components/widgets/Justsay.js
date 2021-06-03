@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card } from "../cards/cards";
+import Card from "../cards/card";
 import { MdClose, MdEdit } from "react-icons/md";
 import Modal from "../modal";
 import EditJust from "../cards/editJust";

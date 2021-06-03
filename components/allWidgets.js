@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import WidgetsCard from "./cards/widgetsCard";
 import Card from "./cards/card";
+//import { Card } from "./cards/cards";
+//import { Cards } from "./cards/cards";
 import { Reset } from "./layouts/Setting";
 import AllSettings from "./allSettings";
 import Modal from "./modal";

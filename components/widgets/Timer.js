@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CardTimer from "../cards/cardTimer";
+import { Card } from "../cards/cards";
 import Button from "../button";
 import { IoClose } from "react-icons/io5";
 
@@ -62,7 +62,7 @@ const Timer = ({
   list.value = time;
   return (
     <div className="md:inner md:w-1/2 pb-4 md:pr-4">
-      <CardTimer title="Timer" key={list.id} onDelete={handleDelete} list={list}>
+      <Card title="Timer" key={list.id} onDelete={handleDelete} list={list}>
         <div className="text-center space-x-1">
           <div className="text-6xl mx-7 flex items-center justify-center mt-4 mb-6">
             <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
@@ -95,7 +95,7 @@ const Timer = ({
           )}
         </div>
         <div className="mt-6"></div>
-      </CardTimer>
+      </Card>
     </div>
   );
 };
