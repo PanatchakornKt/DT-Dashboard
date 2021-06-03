@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "./button";
-import { Reset, Setting } from "./layouts/Setting";
+//import { Reset, Setting } from "./layouts/Setting";
 
 const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
   let tatalWidgets = listAllWidgets.length;

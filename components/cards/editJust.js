@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Form from "../layouts/Form";
+import Form from "../layouts/form";
 
 const EditJust = ({ onEditSubmit, list, title }) => {
   const [checkError, setCheckError] = useState("");

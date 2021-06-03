@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Form from "../layouts/Form";
+import Form from "../layouts/form";
 
 const CardJustShout = ({ onAdd, defaultJustShout }) => {
   const [checkError, setCheckError] = useState("");

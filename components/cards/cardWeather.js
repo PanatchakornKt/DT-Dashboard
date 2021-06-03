@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import Form from "../layouts/Form";
+import React, { useState } from "react";
+import Form from "../layouts/form";
 import weatherAPI from "../../pages/api/weatherAPI";
 
 const CardWeather = ({ onAdd }) => {
@@ -9,6 +9,7 @@ const CardWeather = ({ onAdd }) => {
     e.preventDefault();
     if (e.target.title.value.trim().length < 3) {
       setCheckError("Please enter at least 3 characters.");
+      console.log("name");
     } else {
       try {
         const res = await weatherAPI.get("/data/2.5/weather", {
@@ -21,6 +22,7 @@ const CardWeather = ({ onAdd }) => {
         onAdd("weather", data);
       } catch {
         onAdd("noWeather", e.target.title.value);
+        console.log("call api");
       }
     }
   };

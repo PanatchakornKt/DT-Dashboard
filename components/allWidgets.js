@@ -3,7 +3,7 @@ import WidgetsCard from "./cards/widgetsCard";
 import Card from "./cards/card";
 //import { Card } from "./cards/cards";
 //import { Cards } from "./cards/cards";
-import { Reset } from "./layouts/Setting";
+//import { Reset } from "./layouts/Setting";
 import AllSettings from "./allSettings";
 import Modal from "./modal";
 import Button from "./button";
@@ -46,8 +46,6 @@ const AllWidgets = () => {
   //const [weather, setWeather] = useState("");
   const [zero, setZero] = useState("");
   const [totalTimer, setTotalTimer] = useState("00:00");
-
-  //const check = false;
   const disabled = false;
 
   const id = Math.floor(Math.random() * 1000) + 1;
@@ -154,7 +152,7 @@ const AllWidgets = () => {
     setListAllWidgets(newWidgets);
   };
 
-  const handleAdd = (type, value) => {
+  const onAdd = (type, value) => {
     const data = {
       id: id,
       date: dateTime,
@@ -217,7 +215,6 @@ const AllWidgets = () => {
         return data;
       }
     });
-
     let getTimer = listAllWidgets
       .filter((data) => data.type === "timer")
       .map((data) => data.value);
@@ -229,7 +226,6 @@ const AllWidgets = () => {
     setTotalTimer(min + ":" + sec);
   };
 
-  //const checkWidgets = check;
   const handleAddWidgets = () => {
     if (listAllWidgets.length > 0) {
       return listAllWidgets.map((list) => {
@@ -392,10 +388,7 @@ const AllWidgets = () => {
 
         {modalActiveJustShout && (
           <Modal onCancel={handleCancel}>
-            <CardJustShout
-              onAdd={handleAdd}
-              defaultJustShout={defaultJustShout}
-            />
+            <CardJustShout onAdd={onAdd} defaultJustShout={defaultJustShout} />
           </Modal>
         )}
 
@@ -415,7 +408,7 @@ const AllWidgets = () => {
 
         {modalActiveWeather && (
           <Modal onCancel={handleCancel}>
-            <CardWeather onAdd={handleAdd} />
+            <CardWeather onAdd={onAdd} />
           </Modal>
         )}
 
