@@ -22,7 +22,6 @@ const CardWeather = ({ onAdd }) => {
         onAdd("weather", data);
       } catch {
         onAdd("noWeather", e.target.title.value);
-        console.log("call api");
       }
     }
   };

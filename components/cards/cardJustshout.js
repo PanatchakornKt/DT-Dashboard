@@ -3,7 +3,7 @@ import Form from "../layouts/form";
 
 const CardJustShout = ({ onAdd, defaultJustShout }) => {
   const [checkError, setCheckError] = useState("");
-  
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (e.target.title.value.length < 3) {
