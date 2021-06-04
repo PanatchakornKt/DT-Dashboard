@@ -5,7 +5,7 @@ import weatherAPI from "../../pages/api/weatherAPI";
 import Card from "../cards/card";
 import EditJust from "../cards/editJust";
 
-const Weather = ({ list, onDelete, onFix }) => {
+const Weather = ({ list, onDelete, onData}) => {
   const [modalActiveDataWeather, setModalActivDataWeather] = useState(false);
   let dataName;
   let dataIconDesc;

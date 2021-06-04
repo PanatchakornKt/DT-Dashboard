@@ -3,7 +3,7 @@ import Form from "../layouts/form";
 
 const EditJust = ({ onEditSubmit, list, title }) => {
   const [checkError, setCheckError] = useState("");
-  const dfValue = list.value;
+  let dfValue = list.value;
 
   if (list.type === "weather") {
     dfValue = list.value.name;

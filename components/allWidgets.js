@@ -39,7 +39,7 @@ const AllWidgets = () => {
   const [defaultJustShout, setDefaultJustShout] = useState([]);
   const [listAllWidgets, setListAllWidgets] = useState([]);
   const [selected, setSelected] = useState("");
-  const [justSay, setJustSay] = useState("");
+  //const [justSay, setJustSay] = useState("");
   //const [justShout, setJustShout] = useState("");
   const [counter, setCounter] = useState("");
   const [timer, setTimer] = useState("");
@@ -67,13 +67,12 @@ const AllWidgets = () => {
   const handleJustSay = () => {
     setModalActiveMenu(false);
     setModalActiveJustSay(true);
-    setJustSay();
+    //setJustSay();
   };
 
   const handleJustShout = () => {
     setModalActiveMenu(false);
     setModalActiveJustShout(true);
-    //setJustShout();
   };
 
   const handleCounter = () => {
@@ -98,7 +97,6 @@ const AllWidgets = () => {
   const handleWeather = () => {
     setModalActiveMenu(false);
     setModalActiveWeather(true);
-    //setWeather();
   };
 
   const handleSettings = () => {
@@ -159,9 +157,35 @@ const AllWidgets = () => {
       type,
       value,
     };
-    if (type === "weather") {
+    if (type === "justSay") {
+      listAllWidgets.map((widget) => {
+        if (widget.type === "justSay") {
+          widget = value;
+        }
+      });
+      setListAllWidgets([...listAllWidgets, data]);
+      handleCancel();
+    } else if (type === "weather") {
       listAllWidgets.map((widget) => {
         if (widget.type === "weather") {
+          widget = value;
+        }
+      });
+      setListAllWidgets([...listAllWidgets, data]);
+      handleCancel();
+    }
+  };
+
+  const onAddJustSay = (type, value) => {
+    const data = {
+      id: id,
+      date: dateTime,
+      type,
+      value,
+    };
+    if (type === "justSay") {
+      listAllWidgets.map((widget) => {
+        if (widget.type === "justSay") {
           widget = value;
         }
       });
@@ -250,15 +274,15 @@ const AllWidgets = () => {
         if (list.type === "justSay") {
           return (
             <JustSay
-              // onEdit={onEdit}
-              // key={list.id}
-              // list={list}
-              // onDelete={handleDelete}
               onEdit={onEdit}
               key={list.id}
-              title={justSay}
               list={list}
               onDelete={handleDelete}
+              // onEdit={onEdit}
+              // key={list.id}
+              // title={justSay}
+              // list={list}
+              // onDelete={handleDelete}
             />
           );
         } else if (list.type === "justShout") {
@@ -392,15 +416,15 @@ const AllWidgets = () => {
 
         {modalActiveJustSay && (
           <Modal onCancel={handleCancel}>
-            <CardJustSay
+            {/* <CardJustSay
               setJustSay={setJustSay}
               handleAddWidgets={handleAddWidgets}
               handleCancel={handleCancel}
               setListAllWidgets={setListAllWidgets}
               listAllWidgets={listAllWidgets}
               dateTime={dateTime}
-            />
-            {/* <CardJustSay onAdd={handleAdd} /> */}
+            /> */}
+            <CardJustSay onAdd={onAdd} />
           </Modal>
         )}
 
