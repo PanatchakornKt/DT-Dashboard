@@ -5,7 +5,7 @@ import weatherAPI from "../../pages/api/weatherAPI";
 import Card from "../cards/card";
 import EditJust from "../cards/editJust";
 
-const Weather = ({ list, onDelete, onData}) => {
+const Weather = ({ list, onDelete, onData }) => {
   const [modalActiveDataWeather, setModalActivDataWeather] = useState(false);
   let dataName;
   let dataIconDesc;
@@ -117,7 +117,9 @@ const Weather = ({ list, onDelete, onData}) => {
           {dataIconDesc}
           {dataTemp}
           <div className="text-xs text-gray-400">
-            <div className="mt-6 -mb-2 text-center">{list.date}</div>
+            <div className="mt-6 -mb-2 text-center">
+              Last updated on {list.date}
+            </div>
           </div>
         </div>
       </Card>
