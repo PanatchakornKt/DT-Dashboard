@@ -45,7 +45,7 @@ const JustShout = ({ list, onDelete, onEditJustShout }) => {
         closeBtn={<IoClose />}
         editBtn={<MdEdit />}
       >
-        <div className="text-center my-8">
+        <div className="text-center mt-8 mb-12">
           <h1 className="text-4xl font-bold">{list.value}</h1>
         </div>
         <div className="mt-6 "></div>
