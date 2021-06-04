@@ -30,8 +30,10 @@ const Weather = ({ list, onDelete, onData }) => {
       },
     });
     const { data } = res;
-    //onData(list.id, "weather", data);
-    //onData(list.id, "noWeather", list.value.name);
+    if (list.type === "weather") {
+      onData(list.id, "weather", data);
+      console.log(data)
+    }
   };
   //   try {
   //     const res = await weatherAPI.get("/data/2.5/weather", {
@@ -42,6 +44,7 @@ const Weather = ({ list, onDelete, onData }) => {
   //     });
   //     const { data } = res;
   //     onData(list.id, "weather", data);
+  //     console.log(data);
   //   } catch {
   //     onData(list.id, "noWeather", list.value.name);
   //   }
@@ -77,7 +80,7 @@ const Weather = ({ list, onDelete, onData }) => {
     dataTemp = (
       <h2 className="text-red-500 mt-1 text-5xl font-extralight">--</h2>
     );
-  } else {
+  } else if (list.type === "weather") {
     refreshBtn = <MdRefresh />;
     dataName = (
       <h3 className="text-xl font-bold capitalize">{list.value.name}</h3>
@@ -98,7 +101,6 @@ const Weather = ({ list, onDelete, onData }) => {
       </h2>
     );
   }
-
 
   return (
     <>

@@ -36,12 +36,10 @@ const AllWidgets = () => {
   const [modalActiveWeather, setModalActiveWeather] = useState(false);
   const [defaultJustShout, setDefaultJustShout] = useState([]);
   const [listAllWidgets, setListAllWidgets] = useState([]);
+
   const [selected, setSelected] = useState("");
-  //const [justSay, setJustSay] = useState("");
-  //const [justShout, setJustShout] = useState("");
   const [counter, setCounter] = useState("");
   const [timer, setTimer] = useState("");
-  //const [weather, setWeather] = useState("");
   const [zero, setZero] = useState("");
   const [totalTimer, setTotalTimer] = useState("00:00");
   const disabled = false;
@@ -126,29 +124,6 @@ const AllWidgets = () => {
     setDefaultJustShout("");
   };
 
-  // const handleReset = () => {
-  //   const newWidgets = [];
-  //   listAllWidgets.map((list) => {
-  //     if (selected === "" && list.type === "counter") {
-  //       setSelected("counter");
-  //       list.value = 0;
-  //     } else if (selected === list.type) {
-  //       list.value = 0;
-  //     }
-  //     newWidgets.push(list);
-  //   });
-  //   setListAllWidgets(newWidgets);
-  //   setModalActiveSettings(false);
-  // };
-
-  // const updateValue = (id, value) => {
-  //   const newWidgets = [...listAllWidgets];
-  //   newWidgets.map((widget) => {
-  //     if (widget.id === id) widget.value = value;
-  //   });
-  //   setListAllWidgets(newWidgets);
-  // };
-
   const onAdd = (type, value) => {
     const data = {
       id: id,
@@ -191,43 +166,6 @@ const AllWidgets = () => {
       handleCancel();
     }
   };
-
-  // const onAddJustSay = (type, value) => {
-  //   const data = {
-  //     id: id,
-  //     date: dateTime,
-  //     type,
-  //     value,
-  //   };
-  //   if (type === "justSay") {
-  //     listAllWidgets.map((widget) => {
-  //       if (widget.type === "justSay") {
-  //         widget = value;
-  //       }
-  //     });
-  //     setListAllWidgets([...listAllWidgets, data]);
-  //     handleCancel();
-  //   }
-  // };
-
-  // const onAddJustShout = (type, value) => {
-  //   const data = {
-  //     id: id,
-  //     date: dateTime,
-  //     type,
-  //     value,
-  //   };
-  //   if (type === "justShout") {
-  //     setDefaultJustShout(value);
-  //     listAllWidgets.map((widget) => {
-  //       if (widget.type === "justShout") {
-  //         widget.value = value;
-  //       }
-  //     });
-  //     setListAllWidgets([...listAllWidgets, data]);
-  //     handleCancel();
-  //   }
-  // };
 
   const onEdit = (newId, newValue) => {
     const newlistAllWidgets = [];
@@ -294,11 +232,6 @@ const AllWidgets = () => {
               key={list.id}
               list={list}
               onDelete={handleDelete}
-              // onEdit={onEdit}
-              // key={list.id}
-              // title={justSay}
-              // list={list}
-              // onDelete={handleDelete}
             />
           );
         } else if (list.type === "justShout") {
@@ -313,10 +246,6 @@ const AllWidgets = () => {
         } else if (list.type === "counter") {
           return (
             <Counter
-              // key={list.id}
-              // list={list}
-              // onDelete={handleDelete}
-              // updateValue={updateValue}
               zero={zero}
               setZero={setZero}
               key={list.id}
@@ -437,14 +366,6 @@ const AllWidgets = () => {
 
         {modalActiveJustSay && (
           <Modal onCancel={handleCancel}>
-            {/* <CardJustSay
-              setJustSay={setJustSay}
-              handleAddWidgets={handleAddWidgets}
-              handleCancel={handleCancel}
-              setListAllWidgets={setListAllWidgets}
-              listAllWidgets={listAllWidgets}
-              dateTime={dateTime}
-            /> */}
             <CardJustSay onAdd={onAdd} />
           </Modal>
         )}
@@ -465,7 +386,6 @@ const AllWidgets = () => {
               listAllWidgets={listAllWidgets}
               dateTime={dateTime}
             />
-            {/* <CardCounter onAdd={handleAdd} /> */}
           </Modal>
         )}
 
