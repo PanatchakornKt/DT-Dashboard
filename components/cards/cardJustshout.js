@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Form from "../layouts/form";
 
-const CardJustShout = ({ onAdd, defaultJustShout }) => {
+const CardJustShout = ({ onAddJustShout, defaultJustShout }) => {
   const [checkError, setCheckError] = useState("");
   
   const onSubmit = (e) => {
@@ -9,7 +9,7 @@ const CardJustShout = ({ onAdd, defaultJustShout }) => {
     if (e.target.title.value.length < 3) {
       setCheckError("Please enter at least 3 characters.");
     } else {
-      onAdd("justShout", e.target.title.value.trim());
+      onAddJustShout("justShout", e.target.title.value.trim());
     }
   };
   return (

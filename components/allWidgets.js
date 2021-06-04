@@ -159,6 +159,24 @@ const AllWidgets = () => {
       type,
       value,
     };
+    if (type === "weather") {
+      listAllWidgets.map((widget) => {
+        if (widget.type === "weather") {
+          widget = value;
+        }
+      });
+      setListAllWidgets([...listAllWidgets, data]);
+      handleCancel();
+    }
+  };
+
+  const onAddJustShout = (type, value) => {
+    const data = {
+      id: id,
+      date: dateTime,
+      type,
+      value,
+    };
     if (type === "justShout") {
       setDefaultJustShout(value);
       listAllWidgets.map((widget) => {
@@ -283,7 +301,7 @@ const AllWidgets = () => {
           );
         } else if (list.type === "weather" || list.type === "noWeather") {
           return (
-            <Timer
+            <Weather
               key={list.id}
               list={list}
               onDelete={handleDelete}
@@ -388,7 +406,10 @@ const AllWidgets = () => {
 
         {modalActiveJustShout && (
           <Modal onCancel={handleCancel}>
-            <CardJustShout onAdd={onAdd} defaultJustShout={defaultJustShout} />
+            <CardJustShout
+              onAddJustShout={onAddJustShout}
+              defaultJustShout={defaultJustShout}
+            />
           </Modal>
         )}
 

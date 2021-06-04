@@ -92,7 +92,7 @@ const Weather = ({ list, onDelete, onFix }) => {
 
   return (
     <>
-      {modalActiveFixWeather && (
+      {modalActiveDataWeather && (
         <Modal onCancel={handleCancel}>
           <EditJust
             title="Edit Weather"
@@ -103,7 +103,7 @@ const Weather = ({ list, onDelete, onFix }) => {
       )}
       <Card
         title="Weather"
-        closeBtn={<IoClose />}
+        closeBtn={<MdClose />}
         editBtn={<MdEdit />}
         refreshBtn={reBtnCard}
         key={list.id}
