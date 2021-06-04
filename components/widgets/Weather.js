@@ -30,11 +30,13 @@ const Weather = ({ list, onDelete, onData }) => {
       },
     });
     const { data } = res;
-    if (list.type === "weather") {
-      onData(list.id, "weather", data);
-      console.log(data)
-    }
+    // if (list.type === "weather") {
+    onData(list.id, "weather", data);
+    //onData(list.id, "noWeather", list.value.name);
+    console.log(data);
+    //}
   };
+
   //   try {
   //     const res = await weatherAPI.get("/data/2.5/weather", {
   //       params: {
@@ -114,7 +116,7 @@ const Weather = ({ list, onDelete, onData }) => {
         </Modal>
       )}
       <Card
-        title={"weather" || "noWeather"}
+        title={"Weather" || "noWeather"}
         closeBtn={<MdClose />}
         editBtn={<MdEdit />}
         refreshBtn={refreshBtn}
