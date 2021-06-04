@@ -16,6 +16,9 @@ const AllSettings = ({
   let totalJustSay = 0;
   let totalJustShout = 0;
   let totalCounter = 0;
+  let cityName = "N/A"
+  let coldest = 0;
+  let temp = 100;
   let editJustShout = (
     <div
       title="JustShout text"
@@ -83,6 +86,12 @@ const AllSettings = ({
       totalJust = totalJust + list.value.length;
     } else if (list.type === "counter") {
       totalCounter = totalCounter + list.value;
+    } else if (list.type === "weather") {
+      coldest = `${parseInt(list.value.main.temp)}`;
+      if (coldest < temp) {
+        temp = coldest;
+        cityName = list.value.name;
+      }
     }
   });
 
@@ -109,6 +118,10 @@ const AllSettings = ({
           <div className="table-row">
             <div className="table-cell pr-4 font-semibold">Total time: </div>
             <div className="table-cell">{totalTimer}</div>
+          </div>
+          <div className="table-row">
+            <div className="table-cell pr-4 font-semibold">Coldest cities: </div>
+            <div className="table-cell">{cityName}</div>
           </div>
         </div>
       </div>

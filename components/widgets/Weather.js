@@ -10,7 +10,7 @@ const Weather = ({ list, onDelete, onData }) => {
   let dataName;
   let dataIconDesc;
   let dataTemp;
-  let reBtnCard;
+  let refreshBtn;
 
   const handleCancel = () => {
     setModalActivDataWeather(false);
@@ -23,6 +23,7 @@ const Weather = ({ list, onDelete, onData }) => {
   };
 
   const handleRefresh = async () => {
+    console.log("refresh");
     try {
       const res = await weatherAPI.get("/data/2.5/weather", {
         params: {
@@ -70,7 +71,7 @@ const Weather = ({ list, onDelete, onData }) => {
       <h2 className="text-red-500 mt-1 text-5xl font-extralight">--</h2>
     );
   } else {
-    reBtnCard = <MdRefresh />;
+    refreshBtn = <MdRefresh />;
     dataName = (
       <h3 className="text-xl font-bold capitalize">{list.value.name}</h3>
     );
@@ -106,7 +107,7 @@ const Weather = ({ list, onDelete, onData }) => {
         title="Weather"
         closeBtn={<MdClose />}
         editBtn={<MdEdit />}
-        refreshBtn={reBtnCard}
+        refreshBtn={refreshBtn}
         key={list.id}
         onDelete={handleDelete}
         onEdit={handleEdit}
