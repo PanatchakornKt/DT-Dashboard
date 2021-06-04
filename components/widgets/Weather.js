@@ -23,20 +23,29 @@ const Weather = ({ list, onDelete, onData }) => {
   };
 
   const handleRefresh = async () => {
-    console.log("refresh");
-    try {
-      const res = await weatherAPI.get("/data/2.5/weather", {
-        params: {
-          q: list.value.name,
-          units: "metric",
-        },
-      });
-      const { data } = res;
-      onData(list.id, "weather", data);
-    } catch {
-      onData(list.id, "noWeather", list.value.name);
-    }
+    const res = await weatherAPI.get("/data/2.5/weather", {
+      params: {
+        q: list.value.name,
+        units: "metric",
+      },
+    });
+    const { data } = res;
+    //onData(list.id, "weather", data);
+    //onData(list.id, "noWeather", list.value.name);
   };
+  //   try {
+  //     const res = await weatherAPI.get("/data/2.5/weather", {
+  //       params: {
+  //         q: list.value.name,
+  //         units: "metric",
+  //       },
+  //     });
+  //     const { data } = res;
+  //     onData(list.id, "weather", data);
+  //   } catch {
+  //     onData(list.id, "noWeather", list.value.name);
+  //   }
+  // };
 
   const onEditSubmit = async (id, type, name) => {
     try {
@@ -49,8 +58,7 @@ const Weather = ({ list, onDelete, onData }) => {
       const { data } = res;
       onData(id, "weather", data);
     } catch {
-      onData(id, "noWweather", name);
-      console.log("no")
+      onData(id, "noWeather", name);
     }
     setModalActivDataWeather(false);
   };
@@ -66,7 +74,6 @@ const Weather = ({ list, onDelete, onData }) => {
         <span className="align-middle">City not found</span>
       </h4>
     );
-
     dataTemp = (
       <h2 className="text-red-500 mt-1 text-5xl font-extralight">--</h2>
     );
@@ -92,6 +99,7 @@ const Weather = ({ list, onDelete, onData }) => {
     );
   }
 
+
   return (
     <>
       {modalActiveDataWeather && (
@@ -104,7 +112,7 @@ const Weather = ({ list, onDelete, onData }) => {
         </Modal>
       )}
       <Card
-        title="Weather"
+        title={"weather" || "noWeather"}
         closeBtn={<MdClose />}
         editBtn={<MdEdit />}
         refreshBtn={refreshBtn}

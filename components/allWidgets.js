@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import WidgetsCard from "./cards/widgetsCard";
 import Card from "./cards/card";
-//import { Card } from "./cards/cards";
-//import { Cards } from "./cards/cards";
-//import { Reset } from "./layouts/Setting";
 import AllSettings from "./allSettings";
 import Modal from "./modal";
 import Button from "./button";
@@ -23,6 +20,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { IoTimerOutline } from "react-icons/io5";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
+import { Gi3DGlasses } from "react-icons/gi";
 import {
   RiAddCircleLine,
   RiIncreaseDecreaseLine,
@@ -97,6 +95,8 @@ const AllWidgets = () => {
     setModalActiveMenu(false);
     setModalActiveWeather(true);
   };
+
+  const handleTest = () => {};
 
   const handleSettings = () => {
     setModalActiveSettings(true);
@@ -176,6 +176,14 @@ const AllWidgets = () => {
     } else if (type === "weather") {
       listAllWidgets.map((widget) => {
         if (widget.type === "weather") {
+          widget = value;
+        }
+      });
+      setListAllWidgets([...listAllWidgets, data]);
+      handleCancel();
+    } else if (type === "noWeather") {
+      listAllWidgets.map((widget) => {
+        if (widget.type === "noWeather") {
           widget = value;
         }
       });
@@ -418,6 +426,11 @@ const AllWidgets = () => {
                   <TiWeatherPartlySunny className="mx-auto text-4xl" />
                 </WidgetsCard>
               </div>
+              <div onClick={handleTest} className="w-1/3 pt-1.5 pl-1.5">
+                <WidgetsCard title="Test">
+                  <Gi3DGlasses className="mx-auto text-4xl" />
+                </WidgetsCard>
+              </div>
             </div>
           </Modal>
         )}
@@ -437,11 +450,8 @@ const AllWidgets = () => {
         )}
 
         {modalActiveJustShout && (
-          <Modal onCancel={handleCancel}> 
-            <CardJustShout
-              onAdd={onAdd}
-              defaultJustShout={defaultJustShout}
-            />
+          <Modal onCancel={handleCancel}>
+            <CardJustShout onAdd={onAdd} defaultJustShout={defaultJustShout} />
           </Modal>
         )}
 
@@ -487,25 +497,6 @@ const AllWidgets = () => {
                   Delete all widgets
                 </button>
               </div>
-              {/* <Reset title="Reset Zone">
-                <div className="flex items-center">
-                  <select
-                    className="flex-1 mt-1 mr-1.5 py-1.5 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 text-sm"
-                    value={selected}
-                    onChange={(e) => setSelectedOption(e.target.value)}
-                  >
-                    <option value="counter">All counters</option>
-                    <option value="timer">All timers</option>
-                  </select>
-                  <button
-                    onClick={handleReset}
-                    className="text-white focus:outline-none px-4 py-1 rounded-md bg-red-500 hover:bg-red-60"
-                  >
-                    {" "}
-                    Set zero
-                  </button>
-                </div>
-              </Reset> */}
             </AllSettings>
           </Modal>
         )}
