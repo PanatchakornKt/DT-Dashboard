@@ -7,11 +7,6 @@ import EditJust from "../cards/editJust";
 const JustSay = ({ list, onDelete, onEdit }) => {
   const [modalActiveEditJustSay, setModalActiveEditJustSay] = useState(false);
 
-  const handleSubmit = (id, value) => {
-    onEdit(id, value);
-    setModalActiveEditJustSay(false);
-  };
-
   const handleDelete = () => {
     onDelete(list);
   };
@@ -22,6 +17,11 @@ const JustSay = ({ list, onDelete, onEdit }) => {
 
   const handleEdit = () => {
     setModalActiveEditJustSay(true);
+  };
+
+  const onEditSubmit = (id, value) => {
+    onEdit(id, value);
+    setModalActiveEditJustSay(false);
   };
 
   return (

@@ -67,7 +67,6 @@ const AllWidgets = () => {
   const handleJustSay = () => {
     setModalActiveMenu(false);
     setModalActiveJustSay(true);
-    //setJustSay();
   };
 
   const handleJustShout = () => {
@@ -127,28 +126,28 @@ const AllWidgets = () => {
     setDefaultJustShout("");
   };
 
-  const handleReset = () => {
-    const newWidgets = [];
-    listAllWidgets.map((list) => {
-      if (selected === "" && list.type === "counter") {
-        setSelected("counter");
-        list.value = 0;
-      } else if (selected === list.type) {
-        list.value = 0;
-      }
-      newWidgets.push(list);
-    });
-    setListAllWidgets(newWidgets);
-    setModalActiveSettings(false);
-  };
+  // const handleReset = () => {
+  //   const newWidgets = [];
+  //   listAllWidgets.map((list) => {
+  //     if (selected === "" && list.type === "counter") {
+  //       setSelected("counter");
+  //       list.value = 0;
+  //     } else if (selected === list.type) {
+  //       list.value = 0;
+  //     }
+  //     newWidgets.push(list);
+  //   });
+  //   setListAllWidgets(newWidgets);
+  //   setModalActiveSettings(false);
+  // };
 
-  const updateValue = (id, value) => {
-    const newWidgets = [...listAllWidgets];
-    newWidgets.map((widget) => {
-      if (widget.id === id) widget.value = value;
-    });
-    setListAllWidgets(newWidgets);
-  };
+  // const updateValue = (id, value) => {
+  //   const newWidgets = [...listAllWidgets];
+  //   newWidgets.map((widget) => {
+  //     if (widget.id === id) widget.value = value;
+  //   });
+  //   setListAllWidgets(newWidgets);
+  // };
 
   const onAdd = (type, value) => {
     const data = {
@@ -165,6 +164,15 @@ const AllWidgets = () => {
       });
       setListAllWidgets([...listAllWidgets, data]);
       handleCancel();
+    } else if (type === "justShout") {
+      setDefaultJustShout(value);
+      listAllWidgets.map((widget) => {
+        if (widget.type === "justShout") {
+          widget.value = value;
+        }
+      });
+      setListAllWidgets([...listAllWidgets, data]);
+      handleCancel();
     } else if (type === "weather") {
       listAllWidgets.map((widget) => {
         if (widget.type === "weather") {
@@ -176,42 +184,42 @@ const AllWidgets = () => {
     }
   };
 
-  const onAddJustSay = (type, value) => {
-    const data = {
-      id: id,
-      date: dateTime,
-      type,
-      value,
-    };
-    if (type === "justSay") {
-      listAllWidgets.map((widget) => {
-        if (widget.type === "justSay") {
-          widget = value;
-        }
-      });
-      setListAllWidgets([...listAllWidgets, data]);
-      handleCancel();
-    }
-  };
+  // const onAddJustSay = (type, value) => {
+  //   const data = {
+  //     id: id,
+  //     date: dateTime,
+  //     type,
+  //     value,
+  //   };
+  //   if (type === "justSay") {
+  //     listAllWidgets.map((widget) => {
+  //       if (widget.type === "justSay") {
+  //         widget = value;
+  //       }
+  //     });
+  //     setListAllWidgets([...listAllWidgets, data]);
+  //     handleCancel();
+  //   }
+  // };
 
-  const onAddJustShout = (type, value) => {
-    const data = {
-      id: id,
-      date: dateTime,
-      type,
-      value,
-    };
-    if (type === "justShout") {
-      setDefaultJustShout(value);
-      listAllWidgets.map((widget) => {
-        if (widget.type === "justShout") {
-          widget.value = value;
-        }
-      });
-      setListAllWidgets([...listAllWidgets, data]);
-      handleCancel();
-    }
-  };
+  // const onAddJustShout = (type, value) => {
+  //   const data = {
+  //     id: id,
+  //     date: dateTime,
+  //     type,
+  //     value,
+  //   };
+  //   if (type === "justShout") {
+  //     setDefaultJustShout(value);
+  //     listAllWidgets.map((widget) => {
+  //       if (widget.type === "justShout") {
+  //         widget.value = value;
+  //       }
+  //     });
+  //     setListAllWidgets([...listAllWidgets, data]);
+  //     handleCancel();
+  //   }
+  // };
 
   const onEdit = (newId, newValue) => {
     const newlistAllWidgets = [];
@@ -429,9 +437,9 @@ const AllWidgets = () => {
         )}
 
         {modalActiveJustShout && (
-          <Modal onCancel={handleCancel}>
+          <Modal onCancel={handleCancel}> 
             <CardJustShout
-              onAddJustShout={onAddJustShout}
+              onAdd={onAdd}
               defaultJustShout={defaultJustShout}
             />
           </Modal>
