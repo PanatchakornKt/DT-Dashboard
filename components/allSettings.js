@@ -4,6 +4,7 @@ import Button from "./button";
 
 const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
   let tatalWidgets = listAllWidgets.length;
+  let totalJust = 0;
   let totalJustSay = 0;
   let totalJustShout = 0;
   let totalCounter = 0;
@@ -14,14 +15,11 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
   };
 
   listAllWidgets.map((list) => {
-    if (list.type === "justSay") {
-      totalJustSay = totalJustSay + list.value.length;
-    } else if (list.type === "justShout") {
-      totalJustShout = totalJustShout + list.value.length;
+    if (list.type === "justSay" || list.type === "justShout") {
+      totalJust = totalJust + list.value.length;
     } else if (list.type === "counter") {
       totalCounter = totalCounter + list.value;
     }
-
   });
 
   return (
@@ -38,7 +36,7 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
             <div className="table-cell pr-4 font-semibold">
               Total Just length:
             </div>
-            <div className="table-cell">{totalJustSay}</div>
+            <div className="table-cell">{totalJust}</div>
           </div>
           <div className="table-row">
             <div className="table-cell pr-4 font-semibold">Total count: </div>
