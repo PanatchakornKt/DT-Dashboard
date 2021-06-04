@@ -10,6 +10,7 @@ import JustShout from "./widgets/Justshout";
 import Counter from "./widgets/Counter";
 import Timer from "./widgets/Timer";
 import Weather from "./widgets/Weather";
+import Game from "./game/game";
 
 import CardJustSay from "./cards/cardJustsay";
 import CardJustShout from "./cards/cardJustshout";
@@ -20,7 +21,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { IoTimerOutline } from "react-icons/io5";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
-import { Gi3DGlasses } from "react-icons/gi";
+import { GiRetroController } from "react-icons/gi";
 import {
   RiAddCircleLine,
   RiIncreaseDecreaseLine,
@@ -94,7 +95,17 @@ const AllWidgets = () => {
     setModalActiveWeather(true);
   };
 
-  const handleTest = () => {};
+  const handleGame = () => {
+    setModalActiveMenu(false);
+    handleCancel();
+    const data = {
+      value: "",
+      id: id,
+      date: dateTime,
+      type: "game",
+    };
+    setListAllWidgets([...listAllWidgets, data]);
+  };
 
   const handleSettings = () => {
     setModalActiveSettings(true);
@@ -277,6 +288,15 @@ const AllWidgets = () => {
               onData={onData}
             />
           );
+        } else if (list.type === "game") {
+          return (
+            <Game
+              key={list.id}
+              list={list}
+              title={Game}
+              onDelete={handleDelete}
+            />
+          );
         }
       });
     } else {
@@ -355,9 +375,9 @@ const AllWidgets = () => {
                   <TiWeatherPartlySunny className="mx-auto text-4xl" />
                 </WidgetsCard>
               </div>
-              <div onClick={handleTest} className="w-1/3 pt-1.5 pl-1.5">
-                <WidgetsCard title="Test">
-                  <Gi3DGlasses className="mx-auto text-4xl" />
+              <div onClick={handleGame} className="w-1/3 pt-1.5 pl-1.5">
+                <WidgetsCard title="Game">
+                  <GiRetroController className="mx-auto text-4xl" />
                 </WidgetsCard>
               </div>
             </div>
