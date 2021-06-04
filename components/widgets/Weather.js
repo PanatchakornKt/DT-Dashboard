@@ -49,6 +49,7 @@ const Weather = ({ list, onDelete, onData }) => {
       onData(id, "weather", data);
     } catch {
       onData(id, "noWweather", name);
+      console.log("no")
     }
     setModalActivDataWeather(false);
   };
