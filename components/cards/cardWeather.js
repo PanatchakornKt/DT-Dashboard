@@ -9,7 +9,6 @@ const CardWeather = ({ onAdd }) => {
     e.preventDefault();
     if (e.target.title.value.trim().length < 3) {
       setCheckError("Please enter at least 3 characters.");
-      console.log("name");
     } else {
       try {
         const res = await weatherAPI.get("/data/2.5/weather", {

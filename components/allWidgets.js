@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import WidgetsCard from "./cards/widgetsCard";
 import Card from "./cards/card";
-//import { Card } from "./cards/cards";
-//import { Cards } from "./cards/cards";
-//import { Reset } from "./layouts/Setting";
 import AllSettings from "./allSettings";
 import Modal from "./modal";
 import Button from "./button";
@@ -23,6 +20,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { IoTimerOutline } from "react-icons/io5";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
+import { Gi3DGlasses } from "react-icons/gi";
 import {
   RiAddCircleLine,
   RiIncreaseDecreaseLine,
@@ -38,12 +36,10 @@ const AllWidgets = () => {
   const [modalActiveWeather, setModalActiveWeather] = useState(false);
   const [defaultJustShout, setDefaultJustShout] = useState([]);
   const [listAllWidgets, setListAllWidgets] = useState([]);
+
   const [selected, setSelected] = useState("");
-  //const [justSay, setJustSay] = useState("");
-  //const [justShout, setJustShout] = useState("");
   const [counter, setCounter] = useState("");
   const [timer, setTimer] = useState("");
-  //const [weather, setWeather] = useState("");
   const [zero, setZero] = useState("");
   const [totalTimer, setTotalTimer] = useState("00:00");
   const disabled = false;
@@ -98,6 +94,8 @@ const AllWidgets = () => {
     setModalActiveWeather(true);
   };
 
+  const handleTest = () => {};
+
   const handleSettings = () => {
     setModalActiveSettings(true);
   };
@@ -125,29 +123,6 @@ const AllWidgets = () => {
     setModalActiveSettings(false);
     setDefaultJustShout("");
   };
-
-  // const handleReset = () => {
-  //   const newWidgets = [];
-  //   listAllWidgets.map((list) => {
-  //     if (selected === "" && list.type === "counter") {
-  //       setSelected("counter");
-  //       list.value = 0;
-  //     } else if (selected === list.type) {
-  //       list.value = 0;
-  //     }
-  //     newWidgets.push(list);
-  //   });
-  //   setListAllWidgets(newWidgets);
-  //   setModalActiveSettings(false);
-  // };
-
-  // const updateValue = (id, value) => {
-  //   const newWidgets = [...listAllWidgets];
-  //   newWidgets.map((widget) => {
-  //     if (widget.id === id) widget.value = value;
-  //   });
-  //   setListAllWidgets(newWidgets);
-  // };
 
   const onAdd = (type, value) => {
     const data = {
@@ -181,45 +156,16 @@ const AllWidgets = () => {
       });
       setListAllWidgets([...listAllWidgets, data]);
       handleCancel();
+    } else if (type === "noWeather") {
+      listAllWidgets.map((widget) => {
+        if (widget.type === "noWeather") {
+          widget = value;
+        }
+      });
+      setListAllWidgets([...listAllWidgets, data]);
+      handleCancel();
     }
   };
-
-  // const onAddJustSay = (type, value) => {
-  //   const data = {
-  //     id: id,
-  //     date: dateTime,
-  //     type,
-  //     value,
-  //   };
-  //   if (type === "justSay") {
-  //     listAllWidgets.map((widget) => {
-  //       if (widget.type === "justSay") {
-  //         widget = value;
-  //       }
-  //     });
-  //     setListAllWidgets([...listAllWidgets, data]);
-  //     handleCancel();
-  //   }
-  // };
-
-  // const onAddJustShout = (type, value) => {
-  //   const data = {
-  //     id: id,
-  //     date: dateTime,
-  //     type,
-  //     value,
-  //   };
-  //   if (type === "justShout") {
-  //     setDefaultJustShout(value);
-  //     listAllWidgets.map((widget) => {
-  //       if (widget.type === "justShout") {
-  //         widget.value = value;
-  //       }
-  //     });
-  //     setListAllWidgets([...listAllWidgets, data]);
-  //     handleCancel();
-  //   }
-  // };
 
   const onEdit = (newId, newValue) => {
     const newlistAllWidgets = [];
@@ -286,11 +232,6 @@ const AllWidgets = () => {
               key={list.id}
               list={list}
               onDelete={handleDelete}
-              // onEdit={onEdit}
-              // key={list.id}
-              // title={justSay}
-              // list={list}
-              // onDelete={handleDelete}
             />
           );
         } else if (list.type === "justShout") {
@@ -305,10 +246,6 @@ const AllWidgets = () => {
         } else if (list.type === "counter") {
           return (
             <Counter
-              // key={list.id}
-              // list={list}
-              // onDelete={handleDelete}
-              // updateValue={updateValue}
               zero={zero}
               setZero={setZero}
               key={list.id}
@@ -418,30 +355,24 @@ const AllWidgets = () => {
                   <TiWeatherPartlySunny className="mx-auto text-4xl" />
                 </WidgetsCard>
               </div>
+              <div onClick={handleTest} className="w-1/3 pt-1.5 pl-1.5">
+                <WidgetsCard title="Test">
+                  <Gi3DGlasses className="mx-auto text-4xl" />
+                </WidgetsCard>
+              </div>
             </div>
           </Modal>
         )}
 
         {modalActiveJustSay && (
           <Modal onCancel={handleCancel}>
-            {/* <CardJustSay
-              setJustSay={setJustSay}
-              handleAddWidgets={handleAddWidgets}
-              handleCancel={handleCancel}
-              setListAllWidgets={setListAllWidgets}
-              listAllWidgets={listAllWidgets}
-              dateTime={dateTime}
-            /> */}
             <CardJustSay onAdd={onAdd} />
           </Modal>
         )}
 
         {modalActiveJustShout && (
-          <Modal onCancel={handleCancel}> 
-            <CardJustShout
-              onAdd={onAdd}
-              defaultJustShout={defaultJustShout}
-            />
+          <Modal onCancel={handleCancel}>
+            <CardJustShout onAdd={onAdd} defaultJustShout={defaultJustShout} />
           </Modal>
         )}
 
@@ -455,7 +386,6 @@ const AllWidgets = () => {
               listAllWidgets={listAllWidgets}
               dateTime={dateTime}
             />
-            {/* <CardCounter onAdd={handleAdd} /> */}
           </Modal>
         )}
 
@@ -487,25 +417,6 @@ const AllWidgets = () => {
                   Delete all widgets
                 </button>
               </div>
-              {/* <Reset title="Reset Zone">
-                <div className="flex items-center">
-                  <select
-                    className="flex-1 mt-1 mr-1.5 py-1.5 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 text-sm"
-                    value={selected}
-                    onChange={(e) => setSelectedOption(e.target.value)}
-                  >
-                    <option value="counter">All counters</option>
-                    <option value="timer">All timers</option>
-                  </select>
-                  <button
-                    onClick={handleReset}
-                    className="text-white focus:outline-none px-4 py-1 rounded-md bg-red-500 hover:bg-red-60"
-                  >
-                    {" "}
-                    Set zero
-                  </button>
-                </div>
-              </Reset> */}
             </AllSettings>
           </Modal>
         )}

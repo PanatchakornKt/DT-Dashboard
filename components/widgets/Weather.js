@@ -10,7 +10,7 @@ const Weather = ({ list, onDelete, onData }) => {
   let dataName;
   let dataIconDesc;
   let dataTemp;
-  let reBtnCard;
+  let refreshBtn;
 
   const handleCancel = () => {
     setModalActivDataWeather(false);
@@ -23,19 +23,32 @@ const Weather = ({ list, onDelete, onData }) => {
   };
 
   const handleRefresh = async () => {
-    try {
-      const res = await weatherAPI.get("/data/2.5/weather", {
-        params: {
-          q: list.value.name,
-          units: "metric",
-        },
-      });
-      const { data } = res;
+    const res = await weatherAPI.get("/data/2.5/weather", {
+      params: {
+        q: list.value.name,
+        units: "metric",
+      },
+    });
+    const { data } = res;
+    if (list.type === "weather") {
       onData(list.id, "weather", data);
-    } catch {
-      onData(list.id, "noWeather", list.value.name);
+      console.log(data)
     }
   };
+  //   try {
+  //     const res = await weatherAPI.get("/data/2.5/weather", {
+  //       params: {
+  //         q: list.value.name,
+  //         units: "metric",
+  //       },
+  //     });
+  //     const { data } = res;
+  //     onData(list.id, "weather", data);
+  //     console.log(data);
+  //   } catch {
+  //     onData(list.id, "noWeather", list.value.name);
+  //   }
+  // };
 
   const onEditSubmit = async (id, type, name) => {
     try {
@@ -48,8 +61,7 @@ const Weather = ({ list, onDelete, onData }) => {
       const { data } = res;
       onData(id, "weather", data);
     } catch {
-      onData(id, "noWweather", name);
-      console.log("no")
+      onData(id, "noWeather", name);
     }
     setModalActivDataWeather(false);
   };
@@ -65,12 +77,11 @@ const Weather = ({ list, onDelete, onData }) => {
         <span className="align-middle">City not found</span>
       </h4>
     );
-
     dataTemp = (
       <h2 className="text-red-500 mt-1 text-5xl font-extralight">--</h2>
     );
-  } else {
-    reBtnCard = <MdRefresh />;
+  } else if (list.type === "weather") {
+    refreshBtn = <MdRefresh />;
     dataName = (
       <h3 className="text-xl font-bold capitalize">{list.value.name}</h3>
     );
@@ -103,10 +114,10 @@ const Weather = ({ list, onDelete, onData }) => {
         </Modal>
       )}
       <Card
-        title="Weather"
+        title={"weather" || "noWeather"}
         closeBtn={<MdClose />}
         editBtn={<MdEdit />}
-        refreshBtn={reBtnCard}
+        refreshBtn={refreshBtn}
         key={list.id}
         onDelete={handleDelete}
         onEdit={handleEdit}

@@ -2,9 +2,11 @@ import React from "react";
 import { MdClose, MdEdit } from "react-icons/md";
 
 const Card = ({ title, children, onDelete }) => {
+  
   const handleClick = (e) => {
     onDelete(e);
   };
+
   return (
     <div className="p-5 border-1 bg-white rounded-2xl relative undefined">
       <h2 className="text-lg font-bold text-gray-400 mb-1.5">{title}</h2>
