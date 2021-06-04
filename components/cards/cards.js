@@ -22,35 +22,35 @@ export const Card = ({ title, children, onDelete }) => {
   );
 };
 
-export const CardEdit = ({ title, children, onDelete, onEdit }) => {
-  const handleClick = (e) => {
-    onDelete(e);
-  };
+// export const CardEdit = ({ title, children, onDelete, onEdit }) => {
+//   const handleClick = (e) => {
+//     onDelete(e);
+//   };
 
-  const handleEdit = (e) => {
-    onEdit(e);
-  };
-  return (
-    <div className="p-5 border-1 bg-white rounded-2xl relative undefined">
-      <h2 className="text-lg font-bold text-gray-400 mb-1.5">{title}</h2>
-      <div className="absolute top-5 right-5">
-        <button
-          className="text-lg text-gray-600 focus:outline-none mr-2"
-          onClick={handleEdit}
-        >
-          <MdEdit />
-        </button>
-        <button
-          onClick={handleClick}
-          className="text-lg text-gray-600 focus:outline-none undefined"
-        >
-          <IoClose />
-        </button>
-      </div>
-      {children}
-    </div>
-  );
-};
+//   const handleEdit = (e) => {
+//     onEdit(e);
+//   };
+//   return (
+//     <div className="p-5 border-1 bg-white rounded-2xl relative undefined">
+//       <h2 className="text-lg font-bold text-gray-400 mb-1.5">{title}</h2>
+//       <div className="absolute top-5 right-5">
+//         <button
+//           className="text-lg text-gray-600 focus:outline-none mr-2"
+//           onClick={handleEdit}
+//         >
+//           <MdEdit />
+//         </button>
+//         <button
+//           onClick={handleClick}
+//           className="text-lg text-gray-600 focus:outline-none undefined"
+//         >
+//           <IoClose />
+//         </button>
+//       </div>
+//       {children}
+//     </div>
+//   );
+// };
 
 export const Cards = ({ title, children, onDelete, onEdit }) => {
   const handleClick = (e) => {
