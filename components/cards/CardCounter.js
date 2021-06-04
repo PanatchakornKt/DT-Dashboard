@@ -1,33 +1,3 @@
-// import React, { useState } from "react";
-// import Form from "../layouts/Form";
-
-// const CardCounter = ({ onAdd }) => {
-//   const [checkError, setCheckError] = useState("");
-
-//   const onSubmit = (e) => {
-//     e.preventDefault();
-//     if (Number(e.target.title.value) < 0) {
-//       setCheckError("Please enter at least 0.");
-//     } else if (e.target.title.value === "") {
-//       setCheckError("Please provide some value.");
-//     } else {
-//       onAdd("counter", Number(e.target.title.value));
-//     }
-//   };
-
-//   return (
-//     <>
-//       <Form
-//         title="Add Counter"
-//         type="number"
-//         onSubmit={onSubmit}
-//         checkError={checkError}
-//       />
-//     </>
-//   );
-// };
-// export default CardCounter;
-
 import React, { useState } from "react";
 import Button from "../button";
 

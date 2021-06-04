@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "./button";
-//import { Reset, Setting } from "./layouts/Setting";
 
 const AllSettings = ({
   listAllWidgets,
@@ -42,8 +41,12 @@ const AllSettings = ({
   );
 
   const onSubmit = (e) => {
-    e.preventDefault(e);
-    setZero(e.target.select.value);
+    e.preventDefault();
+    if (e.target.title.value.length < 3) {
+      setCheckError("Please enter at least 3 characters.");
+    } else {
+      onEditJustShout(e.target.title.value.trim());
+    }
   };
 
   listAllWidgets.map((list) => {
@@ -58,7 +61,7 @@ const AllSettings = ({
               JustShout text
             </h2>
             <fieldset>
-              <form onEditJustShout={onEditJustShout} className="flex">
+              <form onSubmit={onSubmit} className="flex">
                 <div className="flex-1 mr-1">
                   <input
                     name="title"
