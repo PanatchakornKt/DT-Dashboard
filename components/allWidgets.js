@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WidgetsCard from "./cards/widgetsCard";
 import Card from "./cards/card";
 import AllSettings from "./allSettings";
@@ -44,6 +44,10 @@ const AllWidgets = () => {
   const [zero, setZero] = useState("");
   const [totalTimer, setTotalTimer] = useState("00:00");
   const disabled = false;
+
+  useEffect(() => {
+    getLocal();
+  }, []);
 
   const id = Math.floor(Math.random() * 1000) + 1;
   const date = new Date();
@@ -231,6 +235,29 @@ const AllWidgets = () => {
     const min = ("0" + Math.floor((getTimer / 60000) % 60)).slice(-2);
     const sec = ("0" + Math.floor((getTimer / 1000) % 60)).slice(-2);
     setTotalTimer(min + ":" + sec);
+  };
+
+  useEffect(() => {
+    saveLocal();
+  }, [listAllWidgets]);
+
+  const saveLocal = () => {
+    localStorage.setItem("listAllWidgets", JSON.stringify(listAllWidgets));
+    localStorage.setItem("defaultJustShout", JSON.stringify(defaultJustShout));
+  };
+  const getLocal = () => {
+    if (
+      localStorage.getItem("listAllWidgets") === null ||
+      localStorage.getItem("defaultJustShout") === null
+    ) {
+      localStorage.setItem("listAllWidgets", JSON.stringify([]));
+      localStorage.setItem("defaultJustShout", JSON.stringify([]));
+    } else {
+      let Local = JSON.parse(localStorage.getItem("listAllWidgets"));
+      let LocalJustShout = JSON.parse(localStorage.getItem("defaultJustShout"));
+      setListAllWidgets(Local);
+      setDefaultJustShout(LocalJustShout);
+    }
   };
 
   const handleAddWidgets = () => {
