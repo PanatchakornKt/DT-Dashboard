@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import Button from "./button";
+//import { Reset, Setting } from "./layouts/Setting";
 
-const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
+const AllSettings = ({
+  listAllWidgets,
+  children,
+  setZero,
+  totalTimer,
+  defaultJustShout,
+  onEditJustShout,
+}) => {
+  const [checkError, setCheckError] = useState("");
+  const disabled = true;
   let tatalWidgets = listAllWidgets.length;
+  let totalJust = 0;
   let totalJustSay = 0;
+  let totalJustShout = 0;
   let totalCounter = 0;
+  let editJustShout = (
+    <div
+      title="JustShout text"
+      className="p-5 border-1 bg-white rounded-2xl relative mb-4"
+    >
+      <h2 className="text-lg font-bold text-gray-400 mb-1.5">JustShout text</h2>
+      <fieldset disabled>
+        <form className="flex">
+          <div className="flex-1 mr-1">
+            <input
+              type="text"
+              className="w-full px-2.5 py-1 border focus:outline-none rounded-md"
+              placeholder="Enter text"
+              defaultValue=""
+            />
+          </div>
+          <div>
+            <Button disabled={disabled}>Edit</Button>
+          </div>
+        </form>
+      </fieldset>
+    </div>
+  );
 
   const onSubmit = (e) => {
     e.preventDefault(e);
@@ -11,8 +47,37 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
   };
 
   listAllWidgets.map((list) => {
-    if (list.type === "justSay") {
-      totalJustSay = totalJustSay + list.value.length;
+    if (list.type === "justSay" || list.type === "justShout") {
+      if (list.type === "justShout" && list.value) {
+        editJustShout = (
+          <div
+            title="JustShout text"
+            className="p-5 border-1 bg-white rounded-2xl relative mb-4"
+          >
+            <h2 className="text-lg font-bold text-gray-400 mb-1.5">
+              JustShout text
+            </h2>
+            <fieldset>
+              <form onEditJustShout={onEditJustShout} className="flex">
+                <div className="flex-1 mr-1">
+                  <input
+                    name="title"
+                    type="text"
+                    className="w-full px-2.5 py-1 border focus:outline-none rounded-md"
+                    placeholder="Enter text"
+                    defaultValue={defaultJustShout}
+                  />
+                </div>
+                <div>
+                  <Button disabled={!disabled}>Edit</Button>
+                </div>
+              </form>
+              <div className="text-red-600 text-xs mt-1">{checkError}</div>
+            </fieldset>
+          </div>
+        );
+      }
+      totalJust = totalJust + list.value.length;
     } else if (list.type === "counter") {
       totalCounter = totalCounter + list.value;
     }
@@ -30,9 +95,9 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
           </div>
           <div className="table-row">
             <div className="table-cell pr-4 font-semibold">
-              Total JustSay length:
+              Total Just length:
             </div>
-            <div className="table-cell">{totalJustSay}</div>
+            <div className="table-cell">{totalJust}</div>
           </div>
           <div className="table-row">
             <div className="table-cell pr-4 font-semibold">Total count: </div>
@@ -44,6 +109,7 @@ const AllSettings = ({ listAllWidgets, children, setZero, totalTimer }) => {
           </div>
         </div>
       </div>
+      {editJustShout}
       <div className="p-5 border-1 bg-white rounded-2xl relative mb-4">
         <h2 className="text-lg font-bold text-gray-400 mb-1.5">Reset Zone</h2>
         <form onSubmit={onSubmit}>

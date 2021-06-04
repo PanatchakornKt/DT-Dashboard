@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "../cards/card";
+import { Card } from "../cards/cards";
 import Button from "../button";
 import { IoClose } from "react-icons/io5";
 

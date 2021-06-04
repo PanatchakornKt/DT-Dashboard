@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import { CardEdit } from "../cards/card";
-import { MdClose, MdEdit } from "react-icons/md";
+import Card from "../cards/card";
+import { IoClose } from "react-icons/io5";
+import { MdEdit } from "react-icons/md";
 import Modal from "../modal";
-import EditJustShout from "../cards/EditJustShout";
+import EditJust from "../cards/editJust";
 
-const JustShout = ({ title, list, onDelete, onEdit }) => {
-  const [modalActiveEditJustShout, setModalActiveEditJustShout] = useState(false);
+const JustShout = ({ list, onDelete, onEditJustShout }) => {
+  const [modalActiveEditJustShout, setModalActiveEditJustShout] =
+    useState(false);
 
-  const handleSubmit = (id, value) => {
-    onEdit(id, value);
+  const onEditSubmit = (id, value) => {
+    onEditJustShout(id, value);
     setModalActiveEditJustShout(false);
+  };
+
+  const handleEdit = () => {
+    setModalActiveEditJustShout(true);
   };
 
   const handleDelete = () => {
@@ -19,34 +25,31 @@ const JustShout = ({ title, list, onDelete, onEdit }) => {
   const handleCancel = () => {
     setModalActiveEditJustShout(false);
   };
-
-  const handleEdit = () => {
-    setModalActiveEditJustShout(true);
-  };
-
   return (
     <>
-      {setModalActiveEditJustShout && (
+      {modalActiveEditJustShout && (
         <Modal onCancel={handleCancel}>
-          <EditJustShout onEditSubmit={handleSubmit} list={list} />
+          <EditJust
+            title="Edit JustShout"
+            onEditSubmit={onEditSubmit}
+            list={list}
+          />
         </Modal>
       )}
-      <div className="md:inner md:w-1/2 pb-4 md:pr-4">
-        <CardEdit
-          title="JustShout"
-          key={list.id}
-          onDelete={handleDelete}
-          list={list}
-          onEdit={handleEdit}
-        >
-          <div className="text-center mt-8 mb-12">
-            <h1 className="text-4xl font-bold">{list.value}</h1>
-          </div>
-          <div className="text-xs text-gray-400">
-            <div className="mt-6"></div>
-          </div>
-        </CardEdit>
-      </div>
+      <Card
+        title="JustShout"
+        key={list.id}
+        list={list}
+        onDelete={handleDelete}
+        onEdit={handleEdit}
+        closeBtn={<IoClose />}
+        editBtn={<MdEdit />}
+      >
+        <div className="text-center my-8">
+          <h1 className="text-4xl font-bold">{list.value}</h1>
+        </div>
+        <div className="mt-6 "></div>
+      </Card>
     </>
   );
 };
