@@ -1,4 +1,5 @@
 import "../styles/index.css";
+import "../styles/game.css";
 import App from "next/app";
 import MainLayout from "../components/layouts/main";
 import DefaultLayout from "../components/layouts/default";
@@ -9,13 +10,13 @@ class MyApp extends App {
     const Layout = Component.Layout || DefaultLayout;
 
     return (
-      <div>
-        <MainLayout>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </MainLayout>
-      </div>
+      <>
+          <MainLayout>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </MainLayout>
+      </>
     );
   }
 }
