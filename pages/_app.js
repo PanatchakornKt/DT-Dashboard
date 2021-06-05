@@ -1,4 +1,5 @@
 import "../styles/index.css";
+import "../styles/game.css";
 import App from "next/app";
 import MainLayout from "../components/layouts/main";
 import DefaultLayout from "../components/layouts/default";
