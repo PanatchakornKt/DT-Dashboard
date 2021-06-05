@@ -33,7 +33,6 @@ const Weather = ({ list, onDelete, onData }) => {
     // if (list.type === "weather") {
     onData(list.id, "weather", data);
     //onData(list.id, "noWeather", list.value.name);
-    console.log(data);
     //}
   };
 
