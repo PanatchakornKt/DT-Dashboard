@@ -68,18 +68,21 @@ const Board = ({ imgUrl }) => {
       {!isStarted ? (
         <button
           onClick={handleStartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white focus:outline-none px-4 py-1 rounded-md"
+          className="mb-3 bg-blue-500 hover:bg-blue-600 text-white focus:outline-none px-4 py-1 rounded-md"
         >
           Start game
         </button>
       ) : (
         <button
           onClick={handleShuffleClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white focus:outline-none px-4 py-1 rounded-md"
+          className="mb-3 bg-blue-500 hover:bg-blue-600 text-white focus:outline-none px-4 py-1 rounded-md"
         >
           Restart game
         </button>
       )}
+      <p class="text-xs text-red-500 ">
+        หมายเหตุ: เกมจะรีเซ็ตหากเปลี่ยนหรือรีเฟรชหน้าจอ
+      </p>
     </>
   );
 };
