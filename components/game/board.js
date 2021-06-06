@@ -43,7 +43,7 @@ const Board = ({ imgUrl }) => {
 
   return (
     <>
-      <ul style={style} className="board">
+      <ul style={style} className="p-0 relative">
         {tiles.map((tile, index) => (
           <Tile
             key={tile}
@@ -58,8 +58,8 @@ const Board = ({ imgUrl }) => {
       </ul>
       {hasWon && isStarted && <div>Puzzle solved 🧠 🎉</div>}
       {!isStarted ?
-        (<button onClick={handleStartClick}>Start game</button>) :
-        (<button onClick={handleShuffleClick}>Restart game</button>)}
+        (<button onClick={handleStartClick} className="bg-blue-500 hover:bg-blue-600 text-white focus:outline-none px-4 py-1 rounded-md">Start game</button>) :
+        (<button onClick={handleShuffleClick} className="bg-blue-500 hover:bg-blue-600 text-white focus:outline-none px-4 py-1 rounded-md">Restart game</button>)}
     </>
   );
 }

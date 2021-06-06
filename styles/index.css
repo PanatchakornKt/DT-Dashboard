@@ -15,16 +15,3 @@
   }
 }
 
-.game {
-  display: grid;
-  place-items: center;
-}
-.board {
-  position: relative;
-  padding: 0;
-}
-.tile {
-  position: absolute;
-  display: grid;
-  place-items: center;
-}
