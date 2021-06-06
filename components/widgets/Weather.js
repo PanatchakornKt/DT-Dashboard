@@ -7,10 +7,23 @@ import WidgetsEdit from "../cards/WidgetsEdit";
 
 const Weather = ({ list, onDelete, onData }) => {
   const [modalActiveDataWeather, setModalActivDataWeather] = useState(false);
+
+  const date = new Date();
+  const year = new Intl.DateTimeFormat("en", { year: "2-digit" }).format(date);
+  const month = new Intl.DateTimeFormat("en", { month: "short" }).format(date);
+  const day = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(date);
+  const time = new Intl.DateTimeFormat("en", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(date);
+
   let dataName;
   let dataIconDesc;
   let dataTemp;
   let refreshBtn;
+
+  const dateTime = `${month} ${day}, ${year}, ${time}`;
 
   const handleCancel = () => {
     setModalActivDataWeather(false);
@@ -113,7 +126,7 @@ const Weather = ({ list, onDelete, onData }) => {
           {dataTemp}
           <div className="text-xs text-gray-400">
             <div className="mt-6 -mb-2 text-center">
-              Last updated on {list.date}
+              Last updated on {dateTime}
             </div>
           </div>
         </div>
