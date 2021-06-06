@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Form from "../layouts/form";
+import Form from "../layouts/Form";
 import weatherAPI from "../../pages/api/weatherAPI";
 
 const CardWeather = ({ onAdd }) => {

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Card from "../cards/card";
+import Card from "../cards/Card";
 import { IoClose } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
-import Modal from "../modal";
-import EditJust from "../cards/editJust";
+import Modal from "../Modal";
+import WidgetsEdit from "../cards/WidgetsEdit";
 
 const JustShout = ({ list, onDelete, onEditJustShout }) => {
   const [modalActiveEditJustShout, setModalActiveEditJustShout] =
@@ -29,7 +29,7 @@ const JustShout = ({ list, onDelete, onEditJustShout }) => {
     <>
       {modalActiveEditJustShout && (
         <Modal onCancel={handleCancel}>
-          <EditJust
+          <WidgetsEdit
             title="Edit JustShout"
             onEditSubmit={onEditSubmit}
             list={list}

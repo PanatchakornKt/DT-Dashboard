@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-import WidgetsCard from "./cards/widgetsCard";
-import Card from "./cards/card";
-import AllSettings from "./allSettings";
-import Modal from "./modal";
-import Button from "./button";
+import WidgetsCard from "./cards/WidgetsCard";
+import Card from "./cards/Card";
+import AllSettings from "./AllSettings";
+import Modal from "./Modal";
+import Button from "./Button";
 
 import JustSay from "./widgets/JustSay";
 import JustShout from "./widgets/Justshout";
 import Counter from "./widgets/Counter";
 import Timer from "./widgets/Timer";
 import Weather from "./widgets/Weather";
-import Game from "./game/game";
+import Game from "./game/Game";
 
-import CardJustSay from "./cards/cardJustsay";
-import CardJustShout from "./cards/cardJustshout";
-import CardCounter from "./cards/cardCounter";
-import CardWeather from "./cards/cardWeather";
+import CardJustSay from "./cards/CardJustsay";
+import CardJustShout from "./cards/CardJustshout";
+import CardCounter from "./cards/CardCounter";
+import CardWeather from "./cards/CardWeather";
 
 import { AiOutlineMessage } from "react-icons/ai";
 import { IoTimerOutline } from "react-icons/io5";

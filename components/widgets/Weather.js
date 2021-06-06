@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Modal from "../modal";
+import Modal from "../Modal";
 import { MdClose, MdEdit, MdRefresh } from "react-icons/md";
 import weatherAPI from "../../pages/api/weatherAPI";
-import Card from "../cards/card";
-import EditJust from "../cards/editJust";
+import Card from "../cards/Card";
+import WidgetsEdit from "../cards/WidgetsEdit";
 
 const Weather = ({ list, onDelete, onData }) => {
   const [modalActiveDataWeather, setModalActivDataWeather] = useState(false);
@@ -107,7 +107,7 @@ const Weather = ({ list, onDelete, onData }) => {
     <>
       {modalActiveDataWeather && (
         <Modal onCancel={handleCancel}>
-          <EditJust
+          <WidgetsEdit
             title="Edit Weather"
             onEditSubmit={onEditSubmit}
             list={list}

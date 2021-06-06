@@ -1,7 +1,7 @@
 import "../styles/index.css";
 import App from "next/app";
-import MainLayout from "../components/layouts/main";
-import DefaultLayout from "../components/layouts/default";
+import MainLayout from "../components/layouts/Main";
+import DefaultLayout from "../components/layouts/Default";
 
 class MyApp extends App {
   render() {

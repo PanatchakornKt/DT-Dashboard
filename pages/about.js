@@ -1,6 +1,6 @@
 import React from "react";
 
-const about = () => {
+const About = () => {
   return (
     <>
       <title>About - Daytech Dashbroad</title>
@@ -28,4 +28,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;

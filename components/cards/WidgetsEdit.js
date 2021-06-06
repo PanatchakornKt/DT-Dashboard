@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Form from "../layouts/form";
+import Form from "../layouts/Form";
 
-const EditJust = ({ onEditSubmit, list, title }) => {
+const WidgetsEdit = ({ onEditSubmit, list, title }) => {
   const [checkError, setCheckError] = useState("");
   let dfValue = list.value;
 
@@ -37,4 +37,4 @@ const EditJust = ({ onEditSubmit, list, title }) => {
   );
 };
 
-export default EditJust;
+export default WidgetsEdit;

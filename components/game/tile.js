@@ -1,12 +1,10 @@
 import React from "react";
 import { Motion, spring } from "react-motion";
-//import { motion } from "framer-motion"
-import { getMatrixPosition, getVisualPosition } from "./helpers";
-import { TILE_COUNT, GRID_SIZE, BOARD_SIZE } from "./constants"
+import { getMatrixPosition, getVisualPosition } from "./Helpers";
+import { TILE_COUNT, GRID_SIZE, BOARD_SIZE } from "./Constants";
 
 function Tile(props) {
   const { tile, index, width, height, handleTileClick, imgUrl } = props;
-  console.log("img in tile", imgUrl)
   const { row, col } = getMatrixPosition(index);
   const visualPos = getVisualPosition(row, col, width, height);
   const tileStyle = {
@@ -16,13 +14,15 @@ function Tile(props) {
     translateY: visualPos.y,
     backgroundImage: `url(${imgUrl})`,
     backgroundSize: `${BOARD_SIZE * 1.25}px`,
-    backgroundPosition: `${(100 / GRID_SIZE) * (tile % GRID_SIZE)}% ${(100 / GRID_SIZE) * (Math.floor(tile / GRID_SIZE))}%`,
-
+    backgroundPosition: `${(100 / GRID_SIZE) * (tile % GRID_SIZE)}% ${
+      (100 / GRID_SIZE) * Math.floor(tile / GRID_SIZE)
+    }%`,
   };
+
   const motionStyle = {
     translateX: spring(visualPos.x),
-    translateY: spring(visualPos.y)
-  }
+    translateY: spring(visualPos.y),
+  };
 
   return (
     <Motion style={motionStyle}>
@@ -31,10 +31,9 @@ function Tile(props) {
           style={{
             ...tileStyle,
             transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-            // Is last tile?
             opacity: tile === TILE_COUNT - 1 ? 0 : 1,
           }}
-          className="tile"
+          className="tile text-blue-600 bg-blue-50 rounded-md text-md"
           onClick={() => handleTileClick(index)}
         >
           {!imgUrl && `${tile + 1}`}

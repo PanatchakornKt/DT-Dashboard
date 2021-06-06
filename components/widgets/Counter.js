@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Card from "../layouts/cards";
-import Button from "../button";
+import Card from "../layouts/Cards";
+import Button from "../Button";
 import { IoClose } from "react-icons/io5";
 
 const Counter = ({ title, list, onDelete, zero, setZero }) => {

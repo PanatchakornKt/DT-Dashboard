@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Tile from "./tile";
-import { TILE_COUNT, GRID_SIZE, BOARD_SIZE } from "./constants"
-import { canSwap, shuffle, swap, isSolved } from "./helpers"
+import Tile from "./Tile";
+import { TILE_COUNT, GRID_SIZE, BOARD_SIZE } from "./Constants"
+import { canSwap, shuffle, swap, isSolved } from "./Helpers"
 
-function Board({ imgUrl }) {
+const Board = ({ imgUrl }) => {
   const [tiles, setTiles] = useState([...Array(TILE_COUNT).keys()]);
   const [isStarted, setIsStarted] = useState(false);
   console.log('is started:', isStarted)
@@ -58,8 +58,8 @@ function Board({ imgUrl }) {
       </ul>
       {hasWon && isStarted && <div>Puzzle solved 🧠 🎉</div>}
       {!isStarted ?
-        (<button onClick={() => handleStartClick()}>Start game</button>) :
-        (<button onClick={() => handleShuffleClick()}>Restart game</button>)}
+        (<button onClick={handleStartClick}>Start game</button>) :
+        (<button onClick={handleShuffleClick}>Restart game</button>)}
     </>
   );
 }
