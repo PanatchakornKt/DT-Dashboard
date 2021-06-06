@@ -1,4 +1,4 @@
-import { TILE_COUNT, GRID_SIZE } from "./Constants"
+import { TILE_COUNT, GRID_SIZE } from "./Constants";
 
 export function isSolvable(tiles) {
   let product = 1;

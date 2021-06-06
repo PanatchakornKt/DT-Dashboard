@@ -30,7 +30,9 @@ const Game = ({ onDelete, title, list }) => {
     <div className="md:inner md:w-1/2 pb-4 md:pr-4">
       <Card title="Game" key={list.id} onDelete={handleDelete} list={list}>
         <div className="place-items-center grid">
-          <h3 className="text-xl font-bold capitalize mb-3 text-gray-500">Sliding Puzzle</h3>
+          <h3 className="text-xl font-bold capitalize mb-3 text-gray-500">
+            Sliding Puzzle
+          </h3>
           <Board imgUrl={imgUrl} />
           <input value={imgUrl} onChange={handleImageChange} />
         </div>
