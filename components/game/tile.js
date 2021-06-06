@@ -1,6 +1,6 @@
 import React from "react";
-// import { Motion, spring } from "react-motion";
-import { motion } from "framer-motion"
+import { Motion, spring } from "react-motion";
+//import { motion } from "framer-motion"
 import { getMatrixPosition, getVisualPosition } from "./helpers";
 import { TILE_COUNT, GRID_SIZE, BOARD_SIZE } from "./constants"
 
