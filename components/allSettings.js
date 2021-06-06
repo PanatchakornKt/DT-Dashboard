@@ -16,7 +16,7 @@ const AllSettings = ({
   let totalJustSay = 0;
   let totalJustShout = 0;
   let totalCounter = 0;
-  let cityName = "N/A"
+  let cityName = "N/A";
   let coldest = 0;
   let temp = 100;
   let editJustShout = (
@@ -50,6 +50,11 @@ const AllSettings = ({
     } else {
       onEditJustShout(e.target.title.value.trim());
     }
+  };
+
+  const onRezet = function (e) {
+    e.preventDefault(e);
+    setZero(e.target.select.value);
   };
 
   listAllWidgets.map((list) => {
@@ -120,7 +125,9 @@ const AllSettings = ({
             <div className="table-cell">{totalTimer}</div>
           </div>
           <div className="table-row">
-            <div className="table-cell pr-4 font-semibold">Coldest cities: </div>
+            <div className="table-cell pr-4 font-semibold">
+              Coldest cities:{" "}
+            </div>
             <div className="table-cell">{cityName}</div>
           </div>
         </div>
@@ -128,7 +135,7 @@ const AllSettings = ({
       {editJustShout}
       <div className="p-5 border-1 bg-white rounded-2xl relative mb-4">
         <h2 className="text-lg font-bold text-gray-400 mb-1.5">Reset Zone</h2>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onRezet}>
           <div className="flex items-center">
             <select
               name="select"

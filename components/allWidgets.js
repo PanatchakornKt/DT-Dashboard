@@ -21,11 +21,11 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { IoTimerOutline } from "react-icons/io5";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
-import { GiRetroController } from "react-icons/gi";
 import {
   RiAddCircleLine,
   RiIncreaseDecreaseLine,
   RiSettings3Line,
+  RiDashboardLine,
 } from "react-icons/ri";
 
 const AllWidgets = () => {
@@ -404,7 +404,7 @@ const AllWidgets = () => {
               </div>
               <div onClick={handleGame} className="w-1/3 pt-1.5 pl-1.5">
                 <WidgetsCard title="Game">
-                  <GiRetroController className="mx-auto text-4xl" />
+                  <RiDashboardLine className="mx-auto text-4xl" />
                 </WidgetsCard>
               </div>
             </div>
