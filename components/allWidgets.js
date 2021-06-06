@@ -45,10 +45,6 @@ const AllWidgets = () => {
   const [totalTimer, setTotalTimer] = useState("00:00");
   const disabled = false;
 
-  useEffect(() => {
-    getLocal();
-  }, []);
-
   const id = Math.floor(Math.random() * 1000) + 1;
   const date = new Date();
   const year = new Intl.DateTimeFormat("en", { year: "2-digit" }).format(date);
@@ -236,6 +232,10 @@ const AllWidgets = () => {
     const sec = ("0" + Math.floor((getTimer / 1000) % 60)).slice(-2);
     setTotalTimer(min + ":" + sec);
   };
+
+  useEffect(() => {
+    getLocal();
+  }, []);
 
   useEffect(() => {
     saveLocal();

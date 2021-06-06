@@ -52,7 +52,7 @@ const AllSettings = ({
     }
   };
 
-  const onRezet = function (e) {
+  const onRezet = (e) => {
     e.preventDefault(e);
     setZero(e.target.select.value);
   };

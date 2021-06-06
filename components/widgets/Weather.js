@@ -30,26 +30,8 @@ const Weather = ({ list, onDelete, onData }) => {
       },
     });
     const { data } = res;
-    // if (list.type === "weather") {
     onData(list.id, "weather", data);
-    //onData(list.id, "noWeather", list.value.name);
-    //}
   };
-
-  //   try {
-  //     const res = await weatherAPI.get("/data/2.5/weather", {
-  //       params: {
-  //         q: list.value.name,
-  //         units: "metric",
-  //       },
-  //     });
-  //     const { data } = res;
-  //     onData(list.id, "weather", data);
-  //     console.log(data);
-  //   } catch {
-  //     onData(list.id, "noWeather", list.value.name);
-  //   }
-  // };
 
   const onEditSubmit = async (id, type, name) => {
     try {
