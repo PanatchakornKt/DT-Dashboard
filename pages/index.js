@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import AllWidgets from "../components/allWidgets";
+import AllWidgets from "../components/AllWidgets";
 
 const index = () => {
   return (

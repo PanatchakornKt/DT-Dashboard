@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "./button";
+import Button from "./Button";
 
 const AllSettings = ({
   listAllWidgets,
@@ -52,7 +52,7 @@ const AllSettings = ({
     }
   };
 
-  const onRezet = function (e) {
+  const onRezet = (e) => {
     e.preventDefault(e);
     setZero(e.target.select.value);
   };

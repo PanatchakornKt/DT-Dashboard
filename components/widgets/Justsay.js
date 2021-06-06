@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Card from "../cards/card";
+import Card from "../cards/Card";
 import { MdClose, MdEdit } from "react-icons/md";
-import Modal from "../modal";
-import EditJust from "../cards/editJust";
+import Modal from "../Modal";
+import WidgetsEdit from "../cards/WidgetsEdit";
 
 const JustSay = ({ list, onDelete, onEdit }) => {
   const [modalActiveEditJustSay, setModalActiveEditJustSay] = useState(false);
@@ -28,7 +28,7 @@ const JustSay = ({ list, onDelete, onEdit }) => {
     <>
       {modalActiveEditJustSay && (
         <Modal onCancel={handleCancel}>
-          <EditJust
+          <WidgetsEdit
             title="Edit JustSay"
             onEditSubmit={onEditSubmit}
             list={list}

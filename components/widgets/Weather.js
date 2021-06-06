@@ -1,16 +1,29 @@
 import React, { useState } from "react";
-import Modal from "../modal";
+import Modal from "../Modal";
 import { MdClose, MdEdit, MdRefresh } from "react-icons/md";
 import weatherAPI from "../../pages/api/weatherAPI";
-import Card from "../cards/card";
-import EditJust from "../cards/editJust";
+import Card from "../cards/Card";
+import WidgetsEdit from "../cards/WidgetsEdit";
 
 const Weather = ({ list, onDelete, onData }) => {
   const [modalActiveDataWeather, setModalActivDataWeather] = useState(false);
+
+  const date = new Date();
+  const year = new Intl.DateTimeFormat("en", { year: "2-digit" }).format(date);
+  const month = new Intl.DateTimeFormat("en", { month: "short" }).format(date);
+  const day = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(date);
+  const time = new Intl.DateTimeFormat("en", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(date);
+
   let dataName;
   let dataIconDesc;
   let dataTemp;
   let refreshBtn;
+
+  const dateTime = `${month} ${day}, ${year}, ${time}`;
 
   const handleCancel = () => {
     setModalActivDataWeather(false);
@@ -30,26 +43,8 @@ const Weather = ({ list, onDelete, onData }) => {
       },
     });
     const { data } = res;
-    // if (list.type === "weather") {
     onData(list.id, "weather", data);
-    //onData(list.id, "noWeather", list.value.name);
-    //}
   };
-
-  //   try {
-  //     const res = await weatherAPI.get("/data/2.5/weather", {
-  //       params: {
-  //         q: list.value.name,
-  //         units: "metric",
-  //       },
-  //     });
-  //     const { data } = res;
-  //     onData(list.id, "weather", data);
-  //     console.log(data);
-  //   } catch {
-  //     onData(list.id, "noWeather", list.value.name);
-  //   }
-  // };
 
   const onEditSubmit = async (id, type, name) => {
     try {
@@ -107,7 +102,7 @@ const Weather = ({ list, onDelete, onData }) => {
     <>
       {modalActiveDataWeather && (
         <Modal onCancel={handleCancel}>
-          <EditJust
+          <WidgetsEdit
             title="Edit Weather"
             onEditSubmit={onEditSubmit}
             list={list}
@@ -131,7 +126,7 @@ const Weather = ({ list, onDelete, onData }) => {
           {dataTemp}
           <div className="text-xs text-gray-400">
             <div className="mt-6 -mb-2 text-center">
-              Last updated on {list.date}
+              Last updated on {dateTime}
             </div>
           </div>
         </div>
