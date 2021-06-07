@@ -22,6 +22,7 @@
     "lodash": "^4.17.21",
     "next": "^10.2.3",
     "next-link": "^2.0.0",
+    "open-weather-icons": "^0.0.8",
     "react": "^17.0.1",
     "react-chess-pieces": "^1.0.5",
     "react-dnd": "^14.0.2",
