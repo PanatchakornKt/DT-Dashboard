@@ -2,7 +2,6 @@ import React from "react";
 import { MdClose, MdEdit } from "react-icons/md";
 
 const Cards = ({ title, children, onDelete }) => {
-  
   const handleClick = (e) => {
     onDelete(e);
   };

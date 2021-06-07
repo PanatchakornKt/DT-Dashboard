@@ -13,9 +13,9 @@ const Button = ({ disabled, children, doClick = () => {}, checkColor }) => {
 
   return (
     <>
-    <button className={getButtonClass()} onClick={doClick}>
-      {children}
-    </button>
+      <button className={getButtonClass()} onClick={doClick}>
+        {children}
+      </button>
     </>
   );
 };

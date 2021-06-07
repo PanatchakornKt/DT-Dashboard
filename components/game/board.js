@@ -61,7 +61,7 @@ const Board = ({ imgUrl }) => {
       </ul>
       {hasWon && isStarted && (
         <div className="p-5 border border-dashed border-gray-500 rounded-lg mb-3 font-semibold">
-          🧠 Puzzle Solved 🎉
+          👍🏼 Puzzle Solved 🎉 
         </div>
       )}
       {!isStarted ? (

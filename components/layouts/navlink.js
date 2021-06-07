@@ -17,9 +17,9 @@ const NavLink = ({ href, children }) => {
 
   return (
     <>
-    <Link href={href}>
-      <a className={getClassName(href)}>{children}</a>
-    </Link>
+      <Link href={href}>
+        <a className={getClassName(href)}>{children}</a>
+      </Link>
     </>
   );
 };

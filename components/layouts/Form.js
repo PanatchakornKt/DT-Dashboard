@@ -10,7 +10,7 @@ const Form = ({
   checkError,
   placeholder,
 }) => {
-  return(
+  return (
     <>
       <h2 className="text-xl mb-2">{title}</h2>
       <form onSubmit={onSubmit} className="flex">
