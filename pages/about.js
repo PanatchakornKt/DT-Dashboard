@@ -13,7 +13,7 @@ const About = () => {
           <p className="mb-2">
             We have <strong>JustSay</strong>, <strong>JustShout</strong>,{" "}
             <strong>Counter</strong>,<strong>Timer</strong>,{" "}
-            <strong>Weather</strong> and super hard <strong>TicTacToe </strong>
+            <strong>Weather</strong> and super hard <strong>Sliding Puzzle </strong>
             widgets! You can now add / modify / delete widgets or even destroy
             all of them, also view super great useless statistics! Now bundled
             with state persistence, that remember your widgets eternally, except

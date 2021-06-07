@@ -61,42 +61,44 @@ const Timer = ({
 
   list.value = time;
   return (
-    <div className="md:inner md:w-1/2 pb-4 md:pr-4">
-      <Cards title="Timer" key={list.id} onDelete={handleDelete} list={list}>
-        <div className="text-center space-x-1">
-          <div className="text-6xl mx-7 flex items-center justify-center mt-4 mb-6">
-            <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-            <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+    <>
+      <div className="md:inner md:w-1/2 pb-4 md:pr-4">
+        <Cards title="Timer" key={list.id} onDelete={handleDelete} list={list}>
+          <div className="text-center space-x-1">
+            <div className="text-6xl mx-7 flex items-center justify-center mt-4 mb-6">
+              <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+              <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+            </div>
+            {!timerOn && (
+              <Button doClick={onClick_1} disabled={!disabled}>
+                Start
+              </Button>
+            )}
+            {timerOn && (
+              <Button doClick={onClick_2} disabled={!disabled}>
+                Pause
+              </Button>
+            )}
+            {!timerOn && time == 0 && (
+              <Button doClick={onClick_3} disabled={disabled}>
+                Reset
+              </Button>
+            )}
+            {timerOn && (
+              <Button doClick={onClick_3} disabled={!disabled}>
+                Reset
+              </Button>
+            )}
+            {!timerOn && time > 0 && (
+              <Button doClick={onClick_3} disabled={!disabled}>
+                Reset
+              </Button>
+            )}
           </div>
-          {!timerOn && (
-            <Button doClick={onClick_1} disabled={!disabled}>
-              Start
-            </Button>
-          )}
-          {timerOn && (
-            <Button doClick={onClick_2} disabled={!disabled}>
-              Pause
-            </Button>
-          )}
-          {!timerOn && time == 0 && (
-            <Button doClick={onClick_3} disabled={disabled}>
-              Reset
-            </Button>
-          )}
-          {timerOn && (
-            <Button doClick={onClick_3} disabled={!disabled}>
-              Reset
-            </Button>
-          )}
-          {!timerOn && time > 0 && (
-            <Button doClick={onClick_3} disabled={!disabled}>
-              Reset
-            </Button>
-          )}
-        </div>
-        <div className="mt-6"></div>
-      </Cards>
-    </div>
+          <div className="mt-6"></div>
+        </Cards>
+      </div>
+    </>
   );
 };
 

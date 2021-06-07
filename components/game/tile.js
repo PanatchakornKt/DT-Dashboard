@@ -1,7 +1,12 @@
 import React from "react";
 import { Motion, spring } from "react-motion";
-import { getMatrixPosition, getVisualPosition } from "./Helpers";
-import { TILE_COUNT, GRID_SIZE, BOARD_SIZE } from "./Constants";
+import {
+  getMatrixPosition,
+  getVisualPosition,
+  TILE_COUNT,
+  GRID_SIZE,
+  BOARD_SIZE,
+} from "./Helpers";
 
 function Tile(props) {
   const { tile, index, width, height, handleTileClick, imgUrl } = props;
@@ -25,21 +30,23 @@ function Tile(props) {
   };
 
   return (
-    <Motion style={motionStyle}>
-      {({ translateX, translateY }) => (
-        <li
-          style={{
-            ...tileStyle,
-            transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-            opacity: tile === TILE_COUNT - 1 ? 0 : 1,
-          }}
-          className="absolute text-blue-500 bg-gray-100 rounded-md text-md grid place-items-center"
-          onClick={() => handleTileClick(index)}
-        >
-          {!imgUrl && `${tile + 1}`}
-        </li>
-      )}
-    </Motion>
+    <>
+      <Motion style={motionStyle}>
+        {({ translateX, translateY }) => (
+          <li
+            style={{
+              ...tileStyle,
+              transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+              opacity: tile === TILE_COUNT - 1 ? 0 : 1,
+            }}
+            className="absolute text-blue-500 bg-gray-100 text-md grid place-items-center rounded-md"
+            onClick={() => handleTileClick(index)}
+          >
+            {!imgUrl && `${tile + 1}`}
+          </li>
+        )}
+      </Motion>
+    </>
   );
 }
 
