@@ -23,7 +23,7 @@ const Weather = ({ list, onDelete, onData }) => {
   let dataTemp;
   let refreshBtn;
 
-  const dateTime = `${month} ${day}, ${year}, ${time}`;
+  const dateTimeRe = `${month} ${day}, ${year}, ${time}`;
 
   const handleCancel = () => {
     setModalActivDataWeather(false);
@@ -126,7 +126,7 @@ const Weather = ({ list, onDelete, onData }) => {
           {dataTemp}
           <div className="text-xs text-gray-400">
             <div className="mt-6 -mb-2 text-center">
-              Last updated on {dateTime}
+              Last updated on {dateTimeRe}
             </div>
           </div>
         </div>

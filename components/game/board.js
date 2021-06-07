@@ -6,7 +6,6 @@ import { canSwap, shuffle, swap, isSolved } from "./Helpers";
 const Board = ({ imgUrl }) => {
   const [tiles, setTiles] = useState([...Array(TILE_COUNT).keys()]);
   const [isStarted, setIsStarted] = useState(false);
-  console.log("is started:", isStarted);
 
   const shuffleTiles = () => {
     const shuffledTiles = shuffle(tiles);
@@ -80,7 +79,7 @@ const Board = ({ imgUrl }) => {
           Restart game
         </button>
       )}
-      <p class="text-xs text-red-500 ">
+      <p className="text-xs text-red-500 ">
         หมายเหตุ: เกมจะรีเซ็ตหากเปลี่ยนหรือรีเฟรชหน้าจอ
       </p>
     </>
