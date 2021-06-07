@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Cards from "../layouts/cards";
+import Cards from "../layouts/Cards";
 import { IoClose } from "react-icons/io5";
 import Board from "./Board";
 import { updateURLParameter } from "./Helpers";
