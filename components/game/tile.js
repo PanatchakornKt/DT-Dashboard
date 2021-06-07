@@ -33,7 +33,7 @@ function Tile(props) {
             transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
             opacity: tile === TILE_COUNT - 1 ? 0 : 1,
           }}
-          className="absolute text-blue-500 bg-gray-100 rounded-md text-md grid place-items-center"
+          className="absolute text-blue-500 bg-gray-100 text-md grid place-items-center rounded-md"
           onClick={() => handleTileClick(index)}
         >
           {!imgUrl && `${tile + 1}`}
