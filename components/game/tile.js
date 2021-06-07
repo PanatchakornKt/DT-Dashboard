@@ -25,21 +25,23 @@ function Tile(props) {
   };
 
   return (
-    <Motion style={motionStyle}>
-      {({ translateX, translateY }) => (
-        <li
-          style={{
-            ...tileStyle,
-            transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-            opacity: tile === TILE_COUNT - 1 ? 0 : 1,
-          }}
-          className="absolute text-blue-500 bg-gray-100 text-md grid place-items-center rounded-md"
-          onClick={() => handleTileClick(index)}
-        >
-          {!imgUrl && `${tile + 1}`}
-        </li>
-      )}
-    </Motion>
+    <>
+      <Motion style={motionStyle}>
+        {({ translateX, translateY }) => (
+          <li
+            style={{
+              ...tileStyle,
+              transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+              opacity: tile === TILE_COUNT - 1 ? 0 : 1,
+            }}
+            className="absolute text-blue-500 bg-gray-100 text-md grid place-items-center rounded-md"
+            onClick={() => handleTileClick(index)}
+          >
+            {!imgUrl && `${tile + 1}`}
+          </li>
+        )}
+      </Motion>
+    </>
   );
 }
 
