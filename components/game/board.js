@@ -76,14 +76,14 @@ const Board = ({ imgUrl }) => {
           onClick={handleStartClick}
           className="mb-3 bg-blue-500 hover:bg-blue-600 text-white focus:outline-none px-4 py-1 rounded-md"
         >
-          Start game
+          Start Game
         </button>
       ) : (
         <button
           onClick={handleShuffleClick}
           className="mb-3 bg-blue-500 hover:bg-blue-600 text-white focus:outline-none px-4 py-1 rounded-md"
         >
-          Restart game
+          Restart Game
         </button>
       )}
       <p className="text-xs text-red-500 ">
