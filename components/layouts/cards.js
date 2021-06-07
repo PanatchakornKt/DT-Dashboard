@@ -1,7 +1,7 @@
 import React from "react";
 import { MdClose, MdEdit } from "react-icons/md";
 
-const Card = ({ title, children, onDelete }) => {
+const Cards = ({ title, children, onDelete }) => {
   
   const handleClick = (e) => {
     onDelete(e);
@@ -23,4 +23,4 @@ const Card = ({ title, children, onDelete }) => {
   );
 };
 
-export default Card;
+export default Cards;

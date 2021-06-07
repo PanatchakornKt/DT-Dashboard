@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Card from "../layouts/Cards";
+import Cards from "../layouts/Cards";
 import Button from "../Button";
 import { IoClose } from "react-icons/io5";
 
@@ -54,7 +54,7 @@ const Counter = ({ title, list, onDelete, zero, setZero }) => {
   return (
     <>
       <div className="md:inner md:w-1/2 pb-4 md:pr-4">
-        <Card
+        <Cards
           title="Counter"
           key={list.id}
           onDelete={onClickDelete}
@@ -74,7 +74,7 @@ const Counter = ({ title, list, onDelete, zero, setZero }) => {
             {resetButton}
           </div>
           <div className="mt-6"></div>
-        </Card>
+        </Cards>
       </div>
     </>
   );
