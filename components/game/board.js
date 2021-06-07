@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import Tile from "./Tile";
-import { TILE_COUNT, GRID_SIZE, BOARD_SIZE } from "./Constants";
-import { canSwap, shuffle, swap, isSolved } from "./Helpers";
+import {
+  canSwap,
+  shuffle,
+  swap,
+  isSolved,
+  TILE_COUNT,
+  GRID_SIZE,
+  BOARD_SIZE,
+} from "./Helpers";
 
 const Board = ({ imgUrl }) => {
   const [tiles, setTiles] = useState([...Array(TILE_COUNT).keys()]);
@@ -61,7 +68,7 @@ const Board = ({ imgUrl }) => {
       </ul>
       {hasWon && isStarted && (
         <div className="p-5 border border-dashed border-gray-500 rounded-lg mb-3 font-semibold">
-          👍🏼 Puzzle Solved 🎉 
+          👍🏼 Puzzle Solved 🎉
         </div>
       )}
       {!isStarted ? (
